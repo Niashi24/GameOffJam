@@ -11,11 +11,11 @@ public class PlayerBase : SerializedScriptableObject
     public BattleStats BaseStats => _baseStats;
 
     [SerializeField]
-    Dictionary<int, PlayerMove> _attacksByLevel;
+    Dictionary<int, BattleMove> _attacksByLevel;
 
-    public List<PlayerMove> GetAttacksWithLevel(int level)
+    public List<BattleMove> GetAttacksWithLevel(int level)
     {
-        List<PlayerMove> output = new();
+        List<BattleMove> output = new();
         foreach (var (lvl, atk) in _attacksByLevel)
         {
             if (level >= lvl)

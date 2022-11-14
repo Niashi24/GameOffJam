@@ -3,24 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Battle System/Player Party Member")]
-public class PlayerPartyMember : ScriptableObject
+public class PlayerPartyMember : BasePartyMember
 {
+    public System.Action<float> OnHPChange;
+
     [SerializeField]
     int _level;
 
     [SerializeField]
     float _hp;
-    public float HP;
+    public override float InitialHP => _hp;
+
+    public override float HP
+    {
+        get => _hp;
+        set
+        {
+            _hp = value;
+            OnHPChange?.Invoke(_hp);
+        }
+    }
 
     [SerializeField]
     PlayerBase _playerBase;
 
-    public List<PlayerMove> GetAttacks()
+    public override List<BattleMove> GetAttacks()
     {
         return _playerBase.GetAttacksWithLevel(_level);
     }
 
-    public BattleStats GetStats()
+    public override BattleStats GetStats()
     {
         //TODO: Take into account the level
         return _playerBase.BaseStats;

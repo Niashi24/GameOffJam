@@ -23,6 +23,9 @@ public class BatModeController : MonoBehaviour
 
     private float _initialGravityScale = 1;
 
+    //always grounded in fly mode, otherwise use playerController grounded
+    public bool isGrounded => _batFlyController.enabled ? false : _playerController.isGrounded;
+
     void OnEnable()
     {
         _initialGravityScale = _rbdy2D.gravityScale;

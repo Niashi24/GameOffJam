@@ -36,6 +36,11 @@ public static class RigidbodyExtensions
         return new Vector2(original.x * b.x, original.y * b.y);
     }
 
+    public static float AngleFromHorizontal(this Vector2 original)
+    {
+        return Mathf.Atan2(original.y, original.x);
+    }
+
     public static float Round(this float value, float unit)
     {
         return ((int)(value / unit)) * unit;

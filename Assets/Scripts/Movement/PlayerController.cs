@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     [Header("Collision")]
     [SerializeField]
     ValueReference<bool> _isGrounded;
+    //caches _isGrounded
+    private bool m_isGrounded;
+    public bool isGrounded => m_isGrounded; 
 
     void OnEnable() 
     {
@@ -54,14 +57,14 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
         float xDir = _input.xDir;
-        bool isGrounded = _isGrounded.Value;
+        m_isGrounded = _isGrounded.Value;
 
         float maxSpeed = _maxRunSpeed;
 
         float targetVelocity = xDir * maxSpeed;
         
         if (xDir == 0)
-            if (isGrounded)
+            if (m_isGrounded)
                 targetVelocity = 0;
             else
                 targetVelocity = rbdy2D.velocity.x;

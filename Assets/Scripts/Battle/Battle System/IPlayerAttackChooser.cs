@@ -5,5 +5,5 @@ public interface IPlayerAttackChooser
 {
     IEnumerator Wait();
 
-    List<PlayerAttack> ChooseAttacks(PlayerUnitManager playerUnits);
+    List<BattleAttack> ChooseAttacks(PlayerUnitManager playerUnits);
 }

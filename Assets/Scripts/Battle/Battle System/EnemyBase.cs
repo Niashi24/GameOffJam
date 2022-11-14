@@ -9,10 +9,10 @@ public class EnemyBase : ScriptableObject
     public BattleStats BaseStats => _baseStats;
 
     [SerializeField]
-    List<EnemyMove> _enemyMoves;
+    List<BattleMove> _battleMoves;
 
-    public List<EnemyMove> GetMoves()
+    public List<BattleMove> GetMoves()
     {
-        return _enemyMoves;
+        return _battleMoves;
     }
 }

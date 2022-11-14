@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack
+public class BattleAttack
 {
-    public PlayerMove MoveBase;
-    public PlayerUnit User;
-    public EnemyUnit Target;
+    public BattleMove MoveBase;
+    public BattleUnit User;
+    public BattleUnit Target;
 
     public IEnumerator PlayAttack(BattleContext context)
     {

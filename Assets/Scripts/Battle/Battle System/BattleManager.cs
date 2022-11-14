@@ -41,6 +41,19 @@ public class BattleManager : MonoBehaviour
     //make sure to subscribe methods AFTER starting the battle
     public Action<bool> OnBattleFinish;
 
+    public Action<int> OnTurnFinish;
+
+    void Start()
+    {
+        OnBattleStateChange.Subscribe(LogState);
+    }
+
+    private IEnumerator LogState(BattleState state)
+    {
+        Debug.Log($"Changed state to {state}.");
+        yield break;
+    }
+
     public void StartBattle(PlayerParty playerParty, EnemyParty enemyParty)
     {
         _context.PlayerParty = playerParty;
@@ -75,9 +88,9 @@ public class BattleManager : MonoBehaviour
             yield return OnBattleStateChange.Invoke(_battleState);
 
             _playerAttackChooser.Wait();
-            List<PlayerAttack> playerAttacks = _playerAttackChooser.ChooseAttacks(_playerUnitManager);
+            List<BattleAttack> playerAttacks = _playerAttackChooser.ChooseAttacks(_playerUnitManager);
 
-            foreach (var attack in playerAttacks.OrderBy(x => x.User.BasePlayer.GetStats().Quickness))
+            foreach (var attack in playerAttacks.OrderBy(x => x.User.BaseMember.GetStats().Quickness))
             {
                 yield return attack.PlayAttack(_context);
 
@@ -100,7 +113,7 @@ public class BattleManager : MonoBehaviour
 
             List<EnemyAttack> enemyAttacks = _enemyAttackChooser.ChooseAttacks(_enemyUnitManager);
 
-            foreach (var attack in enemyAttacks.OrderBy(x => x.User.BaseEnemy.GetStats().Quickness))
+            foreach (var attack in enemyAttacks.OrderBy(x => x.User.BaseMember.GetStats().Quickness))
             {
                 yield return attack.PlayAttack(_context);
 
@@ -116,6 +129,8 @@ public class BattleManager : MonoBehaviour
                 }
             }
 
+            _turnNumber++;
+            OnTurnFinish?.Invoke(_turnNumber);
         }
     }
 
@@ -142,7 +157,7 @@ public class BattleManager : MonoBehaviour
     {
         foreach (var player in _playerUnitManager.PlayerUnits)
         {
-            if (player.HP > 0) return false;
+            if (player.InitialHP > 0) return false;
         }
 
         return true;

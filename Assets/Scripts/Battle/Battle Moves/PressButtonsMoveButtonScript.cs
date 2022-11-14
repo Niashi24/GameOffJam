@@ -11,6 +11,8 @@ public class PressButtonsMoveButtonScript : MonoBehaviour
     public void ResetButton()
     {
         pressed = false;
+        OnFirstPress = null;
+        OnButtonPress = null;
     }
 
     public void OnPress()
