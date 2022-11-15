@@ -11,6 +11,9 @@ public class PressButtonsPlayerMove : BattleMoveComponent
     PressButtonsMoveButtonScript _buttonPrefab;
 
     [SerializeField]
+    Transform _buttonParent;
+
+    [SerializeField]
     ValueReference<int> _numButtons = new ValueReference<int>(3);
     
     [SerializeField]
@@ -26,7 +29,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
         buttonPool = new ObjectPool<PressButtonsMoveButtonScript>
         (
             () => Instantiate(
-                    _buttonPrefab, transform.position, Quaternion.identity, transform
+                    _buttonPrefab, _buttonParent.position, Quaternion.identity, _buttonParent
                 ),
             (x) => x.gameObject.SetActive(true),
             (x) => x.gameObject.SetActive(false),
@@ -36,28 +39,35 @@ public class PressButtonsPlayerMove : BattleMoveComponent
 
     public override IEnumerator PlayAttack(BattleContext context, BattleAttack playerMove)
     {
-        List<PressButtonsMoveButtonScript> buttons = new();
-        _buttonsPressed = 0;
         int numButtons = _numButtons.Value;
+        // List<PressButtonsMoveButtonScript> buttons = new(numButtons);
+        PressButtonsMoveButtonScript[] buttons = new PressButtonsMoveButtonScript[numButtons];
+        _buttonsPressed = 0;
         for (int i = 0; i < numButtons; i++)
         {
             buttons[i] = buttonPool.Get();
             buttons[i].OnFirstPress += () => _buttonsPressed++;
+            const float w = 60;
+
+            buttons[i].transform.position = buttons[i].transform.position.With(
+                x: _buttonParent.position.x + (i+1)/2 * w * Mathf.Pow(-1, i+1)
+            );
         }
 
         yield return WaitUntilMoveFinished(numButtons);
 
-        buttons.ForEach((x) => {
-            x.ResetButton();
-            buttonPool.Release(x);
-        });
+        foreach(var button in buttons)
+        {
+            button.ResetButton();
+            buttonPool.Release(button);
+        }
     }
 
     //returns true either when time has run out or when 
     private IEnumerator WaitUntilMoveFinished(int numButtons)
     {
         CoroutineHandle waitForSeconds = this.RunCoroutine(WaitSeconds(numButtons));
-        while (!waitForSeconds.IsDone || _buttonsPressed < numButtons)
+        while (!waitForSeconds.IsDone && _buttonsPressed < numButtons)
             yield return null;
     }
 
@@ -66,9 +76,10 @@ public class PressButtonsPlayerMove : BattleMoveComponent
         yield return new WaitForSeconds(numButtons * _secondsPerButton);
     }
 
+
     public override float getAttackScore()
     {
-        throw new System.NotImplementedException();
+        return ((float)_buttonsPressed)/_numButtons.Value;
     }
 
     public override IEnumerator PlayEffect(BattleContext context, BattleAttack playerMove, float attackScore)

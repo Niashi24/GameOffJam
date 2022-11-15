@@ -1,8 +1,10 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PressButtonsMoveButtonScript : MonoBehaviour
 {
     bool pressed;
+    [ShowInInspector]
     public bool Pressed => pressed;
 
     public System.Action OnFirstPress;
