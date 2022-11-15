@@ -13,4 +13,12 @@ public class BattleStats
     public float Defense;
     [Min(0)]
     public float Quickness;
+
+    public static readonly BattleStats zero = new BattleStats()
+    {
+        HP = 0,
+        Attack = 0,
+        Defense = 0,
+        Quickness = 0
+    };
 }

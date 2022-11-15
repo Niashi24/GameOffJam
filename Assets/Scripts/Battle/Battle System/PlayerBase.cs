@@ -7,12 +7,12 @@ using Sirenix.OdinInspector;
 public class PlayerBase : SerializedScriptableObject
 {
     [SerializeField]
-    BattleStats _baseStats;
-    public BattleStats BaseStats => _baseStats;
-
-    [SerializeField]
     Dictionary<int, BattleMove> _attacksByLevel;
 
+    [SerializeField]
+    PartyMemberStatGrowth _statGrowthCurve;
+
+    [Button]
     public List<BattleMove> GetAttacksWithLevel(int level)
     {
         List<BattleMove> output = new();
@@ -22,5 +22,12 @@ public class PlayerBase : SerializedScriptableObject
                 output.Add(atk);
         }
         return output;
+    }
+
+    [Button]
+    public BattleStats GetAdjustedStats(int level)
+    {
+        if (_statGrowthCurve is null) return BattleStats.zero;
+        return _statGrowthCurve.GetAdjustedStats(level);
     }
 }

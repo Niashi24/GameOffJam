@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa6a69247f35b74c8678a20e6236174, type: 3}
   m_Name: Spider Party Member
   m_EditorClassIdentifier: 
-  _level: 0
-  _hp: 0
-  _playerBase: {fileID: 0}
+  _level: 1
+  _hp: 20
+  _playerBase: {fileID: 11400000, guid: e8aa08f5c24e81b4081413436fa690cb, type: 2}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Battle System/Player Party Member")]
@@ -9,6 +10,7 @@ public class PlayerPartyMember : BasePartyMember
 
     [SerializeField]
     int _level;
+    public int Level => _level;
 
     [SerializeField]
     float _hp;
@@ -34,12 +36,14 @@ public class PlayerPartyMember : BasePartyMember
 
     public override BattleStats GetStats()
     {
-        //TODO: Take into account the level
-        return _playerBase.BaseStats;
+        return _playerBase.GetAdjustedStats(_level);
     }
 
+    [Button]
+    [DisableIf("@_playerBase == null")]
     public void ResetHP()
     {
-
+        if (_playerBase is null) return;
+        _hp = _playerBase.GetAdjustedStats(_level).HP;
     }
 }
