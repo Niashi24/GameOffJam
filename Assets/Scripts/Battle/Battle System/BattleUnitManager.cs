@@ -11,22 +11,30 @@ public class BattleUnitManager : MonoBehaviour
 
     public List<BattleUnit> ActiveUnits => _activeUnits;
 
-    public void InitializeBattleUnits(BattleParty playerParty)
+    [SerializeReference]
+    IBattleUnitPlacer _battleUnitPlacer = new NullBattleUnitPlacer();
+
+    public void InitializeBattleUnits(BattleParty battleParty)
     {
         _availableUnits.ForEach(x => x.gameObject.SetActive(false));
         _activeUnits.Clear();
 
-        if (playerParty.PartyMembers.Count > _availableUnits.Count)
+        if (battleParty.PartyMembers.Count > _availableUnits.Count)
         {
-            AddMoreUnits(playerParty.PartyMembers.Count - _availableUnits.Count);
+            AddMoreUnits(battleParty.PartyMembers.Count - _availableUnits.Count);
         }
 
+        for (int i = 0; i < battleParty.PartyMembers.Count; i++)
+        {
+            _activeUnits.Add(_availableUnits[i]);
+            _activeUnits[i].SetPartyMember(battleParty.PartyMembers[i]);
+            _activeUnits[i].gameObject.SetActive(true);
+        }
 
-
-        throw new NotImplementedException();
+        _battleUnitPlacer?.PlaceUnits(_activeUnits);
     }
 
-    private void AddMoreUnits(int count)
+    protected virtual void AddMoreUnits(int count)
     {
         Debug.LogError("Out of available units. Must create more.");
         throw new NotImplementedException();
