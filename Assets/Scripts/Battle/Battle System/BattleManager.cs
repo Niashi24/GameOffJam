@@ -9,14 +9,11 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField]
     [Required]
-    PlayerUnitManager _playerUnitManager;
-
-    [SerializeField]
-    List<EnemyUnit> _enemyUnits;
+    BattleUnitManager _playerUnitManager;
     
     [SerializeField]
     [Required]
-    EnemyUnitManager _enemyUnitManager;
+    BattleUnitManager _enemyUnitManager;
 
     [ShowInInspector, ReadOnly]
     BattleContext _context = new();
@@ -27,10 +24,10 @@ public class BattleManager : MonoBehaviour
     public int TurnNumber => _turnNumber;
 
     [SerializeReference]
-    IPlayerAttackChooser _playerAttackChooser;
+    IBattleAttackChooser _playerAttackChooser;
 
     [SerializeReference]
-    IEnemyAttackChooser _enemyAttackChooser;
+    IBattleAttackChooser _enemyAttackChooser;
 
     BattleState _battleState = BattleState.BattleStart;
     public BattleState BattleState => _battleState;
@@ -67,12 +64,12 @@ public class BattleManager : MonoBehaviour
 
     void InitializePlayerUnits(PlayerParty playerParty)
     {
-        _playerUnitManager.InitializePlayerUnits(playerParty);
+        _playerUnitManager.InitializeBattleUnits(playerParty);
     }
     
     private void InitializeEnemyUnits(EnemyParty enemyParty)
     {
-        _enemyUnitManager.InitializeEnemyUnits(enemyParty);
+        _enemyUnitManager.InitializeBattleUnits(enemyParty);
     }
 
     IEnumerator BattleCoroutine()
@@ -111,7 +108,7 @@ public class BattleManager : MonoBehaviour
 
             //Choose Enemy Attack
 
-            List<EnemyAttack> enemyAttacks = _enemyAttackChooser.ChooseAttacks(_enemyUnitManager);
+            List<BattleAttack> enemyAttacks = _enemyAttackChooser.ChooseAttacks(_enemyUnitManager);
 
             foreach (var attack in enemyAttacks.OrderBy(x => x.User.BaseMember.GetStats().Quickness))
             {
@@ -145,7 +142,7 @@ public class BattleManager : MonoBehaviour
 
     bool AllEnemiesDown()
     {
-        foreach (var enemy in _enemyUnits)
+        foreach (var enemy in _enemyUnitManager.ActiveUnits)
         {
             if (enemy.HP > 0) return false;
         }
@@ -155,7 +152,7 @@ public class BattleManager : MonoBehaviour
 
     bool AllPlayersDown()
     {
-        foreach (var player in _playerUnitManager.PlayerUnits)
+        foreach (var player in _playerUnitManager.ActiveUnits)
         {
             if (player.InitialHP > 0) return false;
         }

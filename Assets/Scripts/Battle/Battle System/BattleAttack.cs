@@ -8,8 +8,8 @@ public class BattleAttack
     public BattleUnit User;
     public BattleUnit Target;
 
-    public IEnumerator PlayAttack(BattleContext context)
+    public IEnumerator PlayAttack(BattleContext context, Vector3? position = null, Transform attackParent = null)
     {
-        throw new System.NotImplementedException();
+        yield return MoveBase.PlayMove(context, this, position, attackParent);
     }
 }

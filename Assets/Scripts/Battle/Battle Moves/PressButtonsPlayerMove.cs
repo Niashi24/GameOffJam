@@ -34,7 +34,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
         );
     }
 
-    public override IEnumerator PlayAttack(BattleContext context, BattleMove playerMove)
+    public override IEnumerator PlayAttack(BattleContext context, BattleAttack playerMove)
     {
         List<PressButtonsMoveButtonScript> buttons = new();
         _buttonsPressed = 0;
@@ -71,7 +71,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
         throw new System.NotImplementedException();
     }
 
-    public override IEnumerator PlayEffect(BattleContext context, BattleMove playerMove, float attackScore)
+    public override IEnumerator PlayEffect(BattleContext context, BattleAttack playerMove, float attackScore)
     {
         throw new System.NotImplementedException();
     }
