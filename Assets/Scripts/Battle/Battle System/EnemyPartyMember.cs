@@ -17,13 +17,7 @@ public class EnemyPartyMember : BasePartyMember
         }
     }
 
-    public override BattleStats GetStats()
-    {
-        return _enemyBase.BaseStats;
-    }
+    public override BattleStats BattleStats => _enemyBase.BaseStats;
 
-    public override List<BattleMove> GetAttacks()
-    {
-        return _enemyBase.GetMoves();
-    }
+    public override List<BattleMove> Moves => _enemyBase.Moves;
 }

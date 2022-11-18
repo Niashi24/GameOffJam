@@ -7,7 +7,9 @@ public abstract class BasePartyMember : ScriptableObject
 
     public abstract float HP {get; set;}
 
-    public abstract List<BattleMove> GetAttacks();
+    // public abstract List<BattleMove> GetMoves();
 
-    public abstract BattleStats GetStats();
+    public abstract List<BattleMove> Moves {get;}
+
+    public abstract BattleStats BattleStats {get;}
 }

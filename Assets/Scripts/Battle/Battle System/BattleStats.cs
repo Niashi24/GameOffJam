@@ -21,4 +21,15 @@ public class BattleStats
         Defense = 0,
         Quickness = 0
     };
+
+    public static BattleStats operator +(BattleStats a, BattleStats b)
+    {
+        return new BattleStats()
+        {
+            HP = a.HP + b.HP,
+            Attack = a.Attack + b.Attack,
+            Defense = a.Defense + b.Defense,
+            Quickness = a.Quickness + b.Quickness
+        };
+    }
 }

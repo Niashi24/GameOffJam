@@ -11,8 +11,5 @@ public class EnemyBase : ScriptableObject
     [SerializeField]
     List<BattleMove> _battleMoves;
 
-    public List<BattleMove> GetMoves()
-    {
-        return _battleMoves;
-    }
+    public List<BattleMove> Moves => _battleMoves;
 }

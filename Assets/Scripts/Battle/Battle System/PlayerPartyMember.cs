@@ -16,6 +16,14 @@ public class PlayerPartyMember : BasePartyMember
     float _hp;
     public override float InitialHP => _hp;
 
+    [SerializeField]
+    BattleStats _battleStats = BattleStats.zero;
+
+    public override BattleStats BattleStats => _battleStats;
+
+    [SerializeField]
+    List<BattleMove> _moves;
+
     public override float HP
     {
         get => _hp;
@@ -29,14 +37,24 @@ public class PlayerPartyMember : BasePartyMember
     [SerializeField]
     PlayerBase _playerBase;
 
-    public override List<BattleMove> GetAttacks()
-    {
-        return _playerBase.GetAttacksWithLevel(_level);
-    }
+    public override List<BattleMove> Moves => _moves;
 
-    public override BattleStats GetStats()
+    [Button]
+    [DisableIf("@_playerBase == null")]
+    public (BattleStats, List<BattleMove>) LevelUp()
     {
-        return _playerBase.GetAdjustedStats(_level);
+        //increment level
+        _level++;
+        //calculate stat increases
+        List<BattleMove> newMoves = _playerBase.GetAttacksAtLevel(_level);
+        BattleStats statIncrease = _playerBase.GetStatIncrease(_level);
+        //apply stat increases
+        _battleStats += statIncrease;
+        _moves.AddRange(newMoves);
+        //adjust hp
+        _hp += statIncrease.HP;
+        //return output
+        return (statIncrease, newMoves);
     }
 
     [Button]
@@ -44,6 +62,6 @@ public class PlayerPartyMember : BasePartyMember
     public void ResetHP()
     {
         if (_playerBase is null) return;
-        _hp = _playerBase.GetAdjustedStats(_level).HP;
+        _hp = _battleStats.HP;
     }
 }

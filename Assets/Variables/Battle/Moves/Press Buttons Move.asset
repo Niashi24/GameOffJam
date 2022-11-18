@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4326d5f43b62b9345a17d83682f8849e, type: 3}
+  m_Name: Press Buttons Move
+  m_EditorClassIdentifier: 
+  _movePrefab: {fileID: 1239680038846171641, guid: 7daf7bd15251c8941958108591439c94, type: 3}
+  _moveName: Press Buttons
+  _moveDescription: This is a test move where you press buttons and it does stuff.

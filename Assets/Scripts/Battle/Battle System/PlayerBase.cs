@@ -25,7 +25,19 @@ public class PlayerBase : SerializedScriptableObject
     }
 
     [Button]
-    public BattleStats GetAdjustedStats(int level)
+    public List<BattleMove> GetAttacksAtLevel(int level)
+    {
+        List<BattleMove> output = new();
+        if (_attacksByLevel is null)
+            return output;
+        foreach (var (lvl, atk) in _attacksByLevel)
+            if (level == lvl)
+                output.Add(atk);
+        return output;
+    }
+
+    [Button]
+    public BattleStats GetStatIncrease(int level)
     {
         if (_statGrowthCurve is null) return BattleStats.zero;
         return _statGrowthCurve.GetAdjustedStats(level);

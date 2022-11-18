@@ -13,7 +13,7 @@ public class EnemyUnit : BattleUnit
             base.OnHPChange?.Invoke(_hp);
         }
     }
-    public override float InitialHP => _baseMember.GetStats().HP;
+    public override float InitialHP => _baseMember.BattleStats.HP;
 
     public override void SetPartyMember(BasePartyMember member)
     {

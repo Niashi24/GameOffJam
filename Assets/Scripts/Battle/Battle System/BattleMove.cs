@@ -8,6 +8,15 @@ public class BattleMove : ScriptableObject
     [SerializeField]
     BattleMoveComponent _movePrefab;
 
+    [SerializeField]
+    string _moveName;
+    public string MoveName => _moveName;
+    
+    [SerializeField]
+    [TextArea(3, int.MaxValue)]
+    string _moveDescription;
+    public string MoveDescription => _moveDescription;
+
     public IEnumerator PlayMove(BattleContext context, BattleAttack battleAttack, Vector3? position = null, Transform parent = null)
     {
         position = position ?? Vector3.zero;
@@ -18,7 +27,7 @@ public class BattleMove : ScriptableObject
             battleMove = Instantiate(_movePrefab, position.Value, Quaternion.identity);
 
         yield return battleMove.PlayAttack(context, battleAttack);
-        float attackScore = battleMove.getAttackScore();
+        float attackScore = battleMove.GetAttackScore();
         yield return battleMove.PlayEffect(context, battleAttack, attackScore);
 
         //clean up move

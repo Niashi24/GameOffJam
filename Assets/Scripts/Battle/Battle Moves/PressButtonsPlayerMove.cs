@@ -77,7 +77,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
     }
 
 
-    public override float getAttackScore()
+    public override float GetAttackScore()
     {
         return ((float)_buttonsPressed)/_numButtons.Value;
     }

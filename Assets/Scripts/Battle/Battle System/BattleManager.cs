@@ -87,7 +87,7 @@ public class BattleManager : MonoBehaviour
             yield return _playerAttackChooser.WaitToChooseAttacks();
             List<BattleAttack> playerAttacks = _playerAttackChooser.ChooseAttacks(_playerUnitManager);
 
-            foreach (var attack in playerAttacks.OrderBy(x => x.User.BaseMember.GetStats().Quickness))
+            foreach (var attack in playerAttacks.OrderBy(x => x.User.BaseMember.BattleStats.Quickness))
             {
                 yield return attack.PlayAttack(_context);
 
@@ -110,7 +110,7 @@ public class BattleManager : MonoBehaviour
             yield return _enemyAttackChooser.WaitToChooseAttacks();
             List<BattleAttack> enemyAttacks = _enemyAttackChooser.ChooseAttacks(_enemyUnitManager);
 
-            foreach (var attack in enemyAttacks.OrderBy(x => x.User.BaseMember.GetStats().Quickness))
+            foreach (var attack in enemyAttacks.OrderBy(x => x.User.BaseMember.BattleStats.Quickness))
             {
                 yield return attack.PlayAttack(_context);
 
