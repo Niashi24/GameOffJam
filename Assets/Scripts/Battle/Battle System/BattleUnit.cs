@@ -20,4 +20,17 @@ public abstract class BattleUnit : MonoBehaviour
     {
         _baseMember = member;
     }
+
+    public BattleStats GetBattleStats()
+    {
+        //TODO: could possibly adjust due to status ailments
+        BattleStats baseStats = BaseMember.BattleStats;
+
+        return baseStats;
+    }
+
+    public void DealDamage(float damage)
+    {
+        HP = Mathf.Max(0, HP - damage);
+    }
 }

@@ -17,6 +17,10 @@ public class BattleMove : ScriptableObject
     string _moveDescription;
     public string MoveDescription => _moveDescription;
 
+    [SerializeField]
+    float _moveMultiplier;
+    public float MoveMultiplier => _moveMultiplier;
+
     public IEnumerator PlayMove(BattleContext context, BattleAttack battleAttack, Vector3? position = null, Transform parent = null)
     {
         position = position ?? Vector3.zero;

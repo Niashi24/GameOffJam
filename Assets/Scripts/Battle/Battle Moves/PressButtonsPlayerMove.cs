@@ -84,6 +84,9 @@ public class PressButtonsPlayerMove : BattleMoveComponent
 
     public override IEnumerator PlayEffect(BattleContext context, BattleAttack playerMove, float attackScore)
     {
-        throw new System.NotImplementedException();
+        //TODO: play damage animation
+        playerMove.Target.DealDamage(DamageCalculator.CalculateDamage(playerMove, attackScore));
+
+        yield break;
     }
 }

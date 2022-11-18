@@ -32,4 +32,15 @@ public class BattleStats
             Quickness = a.Quickness + b.Quickness
         };
     }
+
+    public BattleStats With(float? HP = null, float? Attack = null, float? Defense = null, float? Quickness = null)
+    {
+        return new BattleStats()
+        {
+            HP = HP ?? this.HP,
+            Attack = Attack ?? this.Attack,
+            Defense = Defense ?? this.Defense,
+            Quickness = Quickness ?? this.Quickness
+        };
+    }
 }
