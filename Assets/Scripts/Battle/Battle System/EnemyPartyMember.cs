@@ -5,7 +5,12 @@ using UnityEngine;
 public class EnemyPartyMember : BasePartyMember
 {
     [SerializeField]
+    string _name;
+    public override string Name => _name;
+
+    [SerializeField]
     EnemyBase _enemyBase;
+
 
     public override float InitialHP => _enemyBase.BaseStats.HP;
     public override float HP

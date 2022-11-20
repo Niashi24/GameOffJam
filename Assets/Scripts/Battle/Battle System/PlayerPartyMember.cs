@@ -9,6 +9,10 @@ public class PlayerPartyMember : BasePartyMember
     public System.Action<float> OnHPChange;
 
     [SerializeField]
+    string _name;
+    public override string Name => _name;
+
+    [SerializeField]
     int _level;
     public int Level => _level;
 

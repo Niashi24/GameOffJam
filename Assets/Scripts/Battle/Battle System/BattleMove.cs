@@ -42,8 +42,8 @@ public class BattleMove : ScriptableObject
         Destroy(battleMove);
     }
 
-    public List<BattleUnit> GetTargetableUnits(BattleContext context)
+    public List<BattleUnit> GetTargetableUnits(BattleUnit user, BattleContext context)
     {
-        return _movePrefab.GetTargetableUnits(context);
+        return _movePrefab.GetTargetableUnits(user, context);
     } 
 }

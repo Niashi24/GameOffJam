@@ -49,37 +49,41 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
 
     IEnumerator CreateAttack(BattleUnit unit, BattleContext context)
     {
-        while (true) //loop until the move is chosen
+        _moveDisplayer.DisplayMoves(unit.BaseMember.Moves);
+        gameObject.SetActive(true);
+
+        while (selectedMove == null)
         {
-            _moveDisplayer.DisplayMoves(unit.BaseMember.Moves);
-            gameObject.SetActive(true);
-
-            while (selectedMove == null)
+            //wait until move selection
+            yield return null;
+            //can cancel selection
+            if (Input.GetMouseButtonDown(1))
             {
-                //wait until move selection
-                yield return null;
-                //can cancel selection
-                if (Input.GetMouseButtonDown(1))
-                {
-                    gameObject.SetActive(false);
-                    yield break; //exit attack selection (go back to previous character)
-                }
-            }
-            gameObject.SetActive(false);
-
-            _targetSelector.DisplayTargets(selectedMove, unit, context);
-
-            while (currentAttack == null)
-            {
-                yield return null;
-
-                if (Input.GetMouseButtonDown(1))
-                {
-                    selectedMove = null;
-                    break; //go back to selecting a move
-                }
+                gameObject.SetActive(false);
+                yield break; //exit attack selection (go back to previous character)
             }
         }
+        gameObject.SetActive(false);
+
+        _targetSelector.SetActive(true);
+        _targetSelector.DisplayTargets(selectedMove, unit, context);
+
+        while (currentAttack == null)
+        {
+            yield return null;
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                selectedMove = null;
+                _targetSelector.SetActive(false);
+                yield return CreateAttack(unit, context);
+                yield break;
+            }
+        }
+
+        selectedMove = null;
+        _targetSelector.SetActive(false);
+        yield break;
     }
     
     public List<BattleAttack> ChooseAttacks(BattleUnitManager unitManager, BattleContext context)

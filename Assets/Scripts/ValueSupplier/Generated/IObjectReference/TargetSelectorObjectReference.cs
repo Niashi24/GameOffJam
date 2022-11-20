@@ -8,4 +8,6 @@ public class TargetSelectorObjectReference : ITargetSelector
     ObjectReference<ITargetSelector> _targetSelector;
 
     public void DisplayTargets(BattleMove move, BattleUnit user, BattleContext context) => _targetSelector.Value.DisplayTargets(move, user, context);
+
+    public void SetActive(bool active) => _targetSelector.Value.SetActive(active);
 }

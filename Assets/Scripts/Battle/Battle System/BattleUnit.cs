@@ -8,6 +8,7 @@ public abstract class BattleUnit : MonoBehaviour
 {
     public abstract float InitialHP {get;}
 
+    [ShowInInspector, ReadOnly]
     public abstract float HP {get; set;}
 
     protected BasePartyMember _baseMember;

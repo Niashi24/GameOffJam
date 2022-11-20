@@ -5,11 +5,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MoveSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField]
-    [Required]
-    UIMoveSelector _moveGroup;
+    UITargetSelector _targetGroup;
+
+    [SerializeField]
+    Camera _camera;
+
+    public BattleUnit Target {get; private set;}
 
     [SerializeField]
     [Required]
@@ -19,13 +23,8 @@ public class MoveSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     Color _disabled, _enabled;
 
     [SerializeField]
-    Text _nameField;
-
-    [SerializeField]
     [Required]
     Text _descriptionField;
-
-    public BattleMove Move {get; private set;}
 
     //might add a sfx for this later
     public System.Action OnEnableOutline;
@@ -41,15 +40,15 @@ public class MoveSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     [Button]
-    public void SetMove(BattleMove move)
+    public void SetTarget(BattleUnit target)
     {
-        Move = move;
-        _nameField.text = move.MoveName;
+        Target = target;
+        transform.position = _camera.WorldToScreenPoint(target.transform.position);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        _moveGroup.SelectMove(Move);
+        _targetGroup.SelectTarget(Target);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -62,13 +61,15 @@ public class MoveSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         DisableOutline();
     }
 
+    [Button]
     public void EnableOutline()
     {
         _outline.color = _enabled;
-        _descriptionField.text = Move.MoveDescription;
+        _descriptionField.text = Target.BaseMember.Name;
         OnEnableOutline?.Invoke();
     }
 
+    [Button]
     public void DisableOutline()
     {
         _outline.color = _disabled;

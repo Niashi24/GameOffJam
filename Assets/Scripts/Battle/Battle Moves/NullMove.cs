@@ -23,7 +23,7 @@ public class NullMove : BattleMoveComponent
         yield break;
     }
 
-    public override List<BattleUnit> GetTargetableUnits(BattleContext context)
+    public override List<BattleUnit> GetTargetableUnits(BattleUnit user, BattleContext context)
     {
         List<BattleUnit> targetableUnits = new();
         targetableUnits.AddRange(context.PlayerUnitManager.ActiveUnits);

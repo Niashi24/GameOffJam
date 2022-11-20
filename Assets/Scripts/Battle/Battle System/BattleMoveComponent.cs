@@ -13,7 +13,7 @@ public abstract class BattleMoveComponent : MonoBehaviour
     //plays the effect after the attack, doing any damage/status conditions, and playing animations
     public abstract IEnumerator PlayEffect(BattleContext context, BattleAttack battleAttack, float attackScore);
 
-    public abstract List<BattleUnit> GetTargetableUnits(BattleContext context);
+    public abstract List<BattleUnit> GetTargetableUnits(BattleUnit user, BattleContext context);
 
     #if UNITY_EDITOR
     [Button]

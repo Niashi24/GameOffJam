@@ -19,7 +19,11 @@ public class MovePageDisplayer : MonoBehaviour, IMoveDisplayer
 
         foreach (BattleMove move in moves)
         {
-            if (selectionIndex >= _moveSelections.Count) break;
+            if (selectionIndex >= _moveSelections.Count) 
+            {
+                Debug.LogError("Error! Ran out of selections", this);
+                break;
+            }
 
             if (move.MoveType == _typeDisplay)
             {

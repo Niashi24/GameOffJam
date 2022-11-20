@@ -25,7 +25,7 @@ public class RandomBattleChooser : IBattleAttackChooser
     {
         List<BattleMove> moves = unit.BaseMember.Moves;
         BattleMove move = moves[Random.Range(0, moves.Count)];
-        List<BattleUnit> targets = move.GetTargetableUnits(context);
+        List<BattleUnit> targets = move.GetTargetableUnits(unit, context);
         BattleUnit target = targets[Random.Range(0, targets.Count)];
 
         return new BattleAttack()

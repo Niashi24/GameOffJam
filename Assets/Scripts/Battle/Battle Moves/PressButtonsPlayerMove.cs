@@ -24,7 +24,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
     [ShowInInspector, ReadOnly]
     int _buttonsPressed;
 
-    void Start()
+    void Awake()
     {
         buttonPool = new ObjectPool<PressButtonsMoveButtonScript>
         (
@@ -90,7 +90,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
         yield break;
     }
 
-    public override List<BattleUnit> GetTargetableUnits(BattleContext context)
+    public override List<BattleUnit> GetTargetableUnits(BattleUnit user, BattleContext context)
     {
         List<BattleUnit> targetableUnits = new();
         targetableUnits.AddRange(context.PlayerUnitManager.ActiveUnits);
