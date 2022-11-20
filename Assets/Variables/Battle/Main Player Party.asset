@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38de6bd5ef4ef07438e68351baecbfe4, type: 3}
   m_Name: Main Player Party
   m_EditorClassIdentifier: 
-  _partyMembers: []
+  _partyMembers:
+  - {fileID: 11400000, guid: 4cb601863618e4442b38c6134550c081, type: 2}

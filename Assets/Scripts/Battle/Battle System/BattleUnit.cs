@@ -14,6 +14,10 @@ public abstract class BattleUnit : MonoBehaviour
     [ShowInInspector, ReadOnly]
     public BasePartyMember BaseMember => _baseMember;
 
+    List<BattleStatusCondition> statusConditions = new();
+    [ShowInInspector, ReadOnly]
+    List<BattleStatusCondition> StatusConditions => statusConditions;
+
     public Action<float> OnHPChange;
 
     public virtual void SetPartyMember(BasePartyMember member)
@@ -23,14 +27,31 @@ public abstract class BattleUnit : MonoBehaviour
 
     public BattleStats GetBattleStats()
     {
-        //TODO: could possibly adjust due to status ailments
-        BattleStats baseStats = BaseMember.BattleStats;
+        BattleStats outputStats = BaseMember.BattleStats;
 
-        return baseStats;
+        foreach (var statusCondition in statusConditions)
+            outputStats = statusCondition.ProcessStats(outputStats);
+
+        return outputStats;
     }
 
     public void DealDamage(float damage)
     {
         HP = Mathf.Max(0, HP - damage);
     }
+
+    public void AddStatusCondition(BattleStatusCondition condition)
+    {
+        statusConditions.Add(condition);
+    }
+
+    public IEnumerator ProcessStatusConditions()
+    {
+        foreach (var statusCondition in statusConditions)
+        {
+            
+        }
+        yield break;
+    }
+    
 }

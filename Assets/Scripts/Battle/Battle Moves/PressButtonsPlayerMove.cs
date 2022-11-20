@@ -89,4 +89,12 @@ public class PressButtonsPlayerMove : BattleMoveComponent
 
         yield break;
     }
+
+    public override List<BattleUnit> GetTargetableUnits(BattleContext context)
+    {
+        List<BattleUnit> targetableUnits = new();
+        targetableUnits.AddRange(context.PlayerUnitManager.ActiveUnits);
+        targetableUnits.AddRange(context.EnemyUnitManager.ActiveUnits);
+        return targetableUnits;
+    }
 }

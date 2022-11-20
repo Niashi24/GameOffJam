@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Press Buttons Move
   m_EditorClassIdentifier: 
   _movePrefab: {fileID: 1239680038846171641, guid: 7daf7bd15251c8941958108591439c94, type: 3}
+  _moveType: 0
   _moveName: Press Buttons
   _moveDescription: This is a test move where you press buttons and it does stuff.
+  _moveMultiplier: 1

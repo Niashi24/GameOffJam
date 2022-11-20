@@ -36,6 +36,16 @@ public static class RigidbodyExtensions
         return new Vector2(original.x * b.x, original.y * b.y);
     }
 
+    public static Color With(this Color original, float? r = null, float? g = null, float? b = null, float? a = null)
+    {
+        return new Color(
+            r ?? original.r,
+            g ?? original.g,
+            b ?? original.b,
+            a ?? original.a
+        );
+    }
+
     public static float AngleFromHorizontal(this Vector2 original)
     {
         return Mathf.Atan2(original.y, original.x);
@@ -60,5 +70,15 @@ public static class RigidbodyExtensions
     public static Vector2 GetUnitVectorFromPositionToMouse(this Camera camera, Vector2 position)
     {
         return (GetMouseWorldPosition(camera) - position).normalized;
+    }
+
+    public static T Pop<T>(this List<T> list)
+    {
+        if (list is null) return default;
+        if (list.Count == 0) return default;
+
+        T obj = list[list.Count - 1];
+        list.RemoveAt(list.Count - 1);
+        return obj;
     }
 }

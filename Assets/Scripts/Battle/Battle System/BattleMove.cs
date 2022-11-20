@@ -9,6 +9,10 @@ public class BattleMove : ScriptableObject
     BattleMoveComponent _movePrefab;
 
     [SerializeField]
+    MoveType _moveType;
+    public MoveType MoveType => _moveType;
+
+    [SerializeField]
     string _moveName;
     public string MoveName => _moveName;
     
@@ -37,4 +41,9 @@ public class BattleMove : ScriptableObject
         //clean up move
         Destroy(battleMove);
     }
+
+    public List<BattleUnit> GetTargetableUnits(BattleContext context)
+    {
+        return _movePrefab.GetTargetableUnits(context);
+    } 
 }

@@ -32,7 +32,7 @@ public class BattleManager : MonoBehaviour
     BattleState _battleState = BattleState.BattleStart;
     public BattleState BattleState => _battleState;
 
-    public static ActionCoroutine<BattleState> OnBattleStateChange;
+    public static ActionCoroutine<BattleState> OnBattleStateChange = new();
 
     //returns true if player won, false if not
     //make sure to subscribe methods AFTER starting the battle
@@ -51,10 +51,13 @@ public class BattleManager : MonoBehaviour
         yield break;
     }
 
-    public void StartBattle(PlayerParty playerParty, EnemyParty enemyParty)
+    [Button]
+    public void StartBattle(BattleParty playerParty, BattleParty enemyParty)
     {
         _context.PlayerParty = playerParty;
         _context.EnemyParty = enemyParty;
+        _context.PlayerUnitManager = _playerUnitManager;
+        _context.EnemyUnitManager = _enemyUnitManager;
 
         OnBattleFinish = null;
 
@@ -62,12 +65,12 @@ public class BattleManager : MonoBehaviour
         StartCoroutine(BattleCoroutine());
     }
 
-    void InitializePlayerUnits(PlayerParty playerParty)
+    void InitializePlayerUnits(BattleParty playerParty)
     {
         _playerUnitManager.InitializeBattleUnits(playerParty);
     }
     
-    private void InitializeEnemyUnits(EnemyParty enemyParty)
+    private void InitializeEnemyUnits(BattleParty enemyParty)
     {
         _enemyUnitManager.InitializeBattleUnits(enemyParty);
     }
@@ -84,8 +87,8 @@ public class BattleManager : MonoBehaviour
             _battleState = BattleState.PlayerAttack;
             yield return OnBattleStateChange.Invoke(_battleState);
 
-            yield return _playerAttackChooser.WaitToChooseAttacks();
-            List<BattleAttack> playerAttacks = _playerAttackChooser.ChooseAttacks(_playerUnitManager);
+            yield return _playerAttackChooser.WaitToChooseAttacks(_playerUnitManager, _context);
+            List<BattleAttack> playerAttacks = _playerAttackChooser.ChooseAttacks(_playerUnitManager, _context);
 
             foreach (var attack in playerAttacks.OrderBy(x => x.User.BaseMember.BattleStats.Quickness))
             {
@@ -107,8 +110,8 @@ public class BattleManager : MonoBehaviour
             yield return OnBattleStateChange.Invoke(_battleState);
 
             //Choose Enemy Attack
-            yield return _enemyAttackChooser.WaitToChooseAttacks();
-            List<BattleAttack> enemyAttacks = _enemyAttackChooser.ChooseAttacks(_enemyUnitManager);
+            yield return _enemyAttackChooser.WaitToChooseAttacks(_enemyUnitManager, _context);
+            List<BattleAttack> enemyAttacks = _enemyAttackChooser.ChooseAttacks(_enemyUnitManager, _context);
 
             foreach (var attack in enemyAttacks.OrderBy(x => x.User.BaseMember.BattleStats.Quickness))
             {
@@ -142,6 +145,7 @@ public class BattleManager : MonoBehaviour
 
     bool AllEnemiesDown()
     {
+        if (_enemyUnitManager.ActiveUnits.Count == 0) return true;
         foreach (var enemy in _enemyUnitManager.ActiveUnits)
         {
             if (enemy.HP > 0) return false;
@@ -152,6 +156,7 @@ public class BattleManager : MonoBehaviour
 
     bool AllPlayersDown()
     {
+        if (_playerUnitManager.ActiveUnits.Count == 0) return true;
         foreach (var player in _playerUnitManager.ActiveUnits)
         {
             if (player.InitialHP > 0) return false;

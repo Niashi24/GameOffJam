@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class BattleStats
+public struct BattleStats
 {
     [Min(0)]
     public float HP;

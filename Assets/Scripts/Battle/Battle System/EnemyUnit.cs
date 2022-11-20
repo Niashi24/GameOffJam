@@ -25,4 +25,13 @@ public class EnemyUnit : BattleUnit
     {
         _hp = InitialHP;
     }
+
+    void OnDrawGizmos()
+    {
+        Color before = Gizmos.color;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, Vector3.one*16);
+        Gizmos.color = before;
+    }
+    
 }

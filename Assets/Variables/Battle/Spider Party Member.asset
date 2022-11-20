@@ -19,5 +19,7 @@ MonoBehaviour:
     Attack: 8
     Defense: 4
     Quickness: 4
-  _moves: []
+  _moves:
+  - {fileID: 11400000, guid: fc418a12b0b9b52428b6d9828ac4e9d2, type: 2}
+  - {fileID: 11400000, guid: 855dbc0b5326b3c4aa7eb238ea193bd2, type: 2}
   _playerBase: {fileID: 11400000, guid: e8aa08f5c24e81b4081413436fa690cb, type: 2}

@@ -1,5 +1,8 @@
 public class BattleContext
 {
-    public PlayerParty PlayerParty;
-    public EnemyParty EnemyParty;
+    public BattleParty PlayerParty;
+    public BattleParty EnemyParty;
+
+    public BattleUnitManager PlayerUnitManager;
+    public BattleUnitManager EnemyUnitManager;
 }

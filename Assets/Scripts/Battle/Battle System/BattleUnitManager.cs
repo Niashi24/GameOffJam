@@ -7,7 +7,7 @@ public class BattleUnitManager : MonoBehaviour
     [SerializeField]
     List<BattleUnit> _availableUnits;
 
-    private List<BattleUnit> _activeUnits;
+    private List<BattleUnit> _activeUnits = new();
 
     public List<BattleUnit> ActiveUnits => _activeUnits;
 
@@ -36,7 +36,6 @@ public class BattleUnitManager : MonoBehaviour
 
     protected virtual void AddMoreUnits(int count)
     {
-        Debug.LogError("Out of available units. Must create more.");
-        throw new NotImplementedException();
+        Debug.LogError("Out of available units. Must create more.", this);
     }
 }

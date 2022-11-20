@@ -1,11 +1,9 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 public class PlayerUnit : BattleUnit
 {
-
-    List<BattleStatusCondition> statusConditions = new();
-    List<BattleStatusCondition> StatusConditions => statusConditions;
-
     public override float HP
     {
         get => BaseMember.HP;
@@ -23,8 +21,11 @@ public class PlayerUnit : BattleUnit
         base.SetPartyMember(member);
     }
 
-    public void AddStatusCondition(BattleStatusCondition condition)
+    void OnDrawGizmos()
     {
-        statusConditions.Add(condition);
+        Color before = Gizmos.color;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(transform.position, Vector3.one*16);
+        Gizmos.color = before;
     }
 }
