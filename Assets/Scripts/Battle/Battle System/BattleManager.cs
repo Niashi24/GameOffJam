@@ -159,7 +159,7 @@ public class BattleManager : MonoBehaviour
         if (_playerUnitManager.ActiveUnits.Count == 0) return true;
         foreach (var player in _playerUnitManager.ActiveUnits)
         {
-            if (player.InitialHP > 0) return false;
+            if (player.HP > 0) return false;
         }
 
         return true;

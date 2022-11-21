@@ -6,7 +6,11 @@ public class PlayerUnit : BattleUnit
 {
     public override float HP
     {
-        get => BaseMember.HP;
+        get
+        {
+            if (BaseMember is not null) return BaseMember.HP;
+            return default;
+        }
         set 
         {
             BaseMember.HP = value;
@@ -14,7 +18,7 @@ public class PlayerUnit : BattleUnit
         }
     }
 
-    public override float InitialHP => BaseMember.HP;
+    public override float InitialHP => BaseMember.BattleStats.HP;
 
     public override void SetPartyMember(BasePartyMember member)
     {

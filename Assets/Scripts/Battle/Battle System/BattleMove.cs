@@ -39,7 +39,7 @@ public class BattleMove : ScriptableObject
         yield return battleMove.PlayEffect(context, battleAttack, attackScore);
 
         //clean up move
-        Destroy(battleMove);
+        Destroy(battleMove.gameObject);
     }
 
     public List<BattleUnit> GetTargetableUnits(BattleUnit user, BattleContext context)

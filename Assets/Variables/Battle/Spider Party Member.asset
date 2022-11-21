@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa6a69247f35b74c8678a20e6236174, type: 3}
   m_Name: Spider Party Member
   m_EditorClassIdentifier: 
+  _name: Spider
   _level: 4
-  _hp: 36
+  _hp: 16
   _battleStats:
     HP: 16
-    Attack: 8
-    Defense: 4
+    Attack: 16
+    Magic: 0
+    Defense: 2
     Quickness: 4
   _moves:
   - {fileID: 11400000, guid: fc418a12b0b9b52428b6d9828ac4e9d2, type: 2}

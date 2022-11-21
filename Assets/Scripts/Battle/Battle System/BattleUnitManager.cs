@@ -14,6 +14,8 @@ public class BattleUnitManager : MonoBehaviour
     [SerializeReference]
     IBattleUnitPlacer _battleUnitPlacer = new NullBattleUnitPlacer();
 
+    public System.Action<List<BattleUnit>> OnInitializeBattleUnits;
+
     public void InitializeBattleUnits(BattleParty battleParty)
     {
         _availableUnits.ForEach(x => x.gameObject.SetActive(false));
@@ -32,6 +34,7 @@ public class BattleUnitManager : MonoBehaviour
         }
 
         _battleUnitPlacer?.PlaceUnits(_activeUnits);
+        OnInitializeBattleUnits?.Invoke(ActiveUnits);
     }
 
     protected virtual void AddMoreUnits(int count)
