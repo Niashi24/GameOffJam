@@ -8,6 +8,8 @@ public struct BattleStats
     [Min(0)]
     public float HP;
     [Min(0)]
+    public float MP;
+    [Min(0)]
     public float Attack;
     [Min(0)]
     public float Magic;
@@ -19,6 +21,7 @@ public struct BattleStats
     public static readonly BattleStats zero = new BattleStats()
     {
         HP = 0,
+        MP = 0,
         Attack = 0,
         Magic = 0,
         Defense = 0,
@@ -30,6 +33,7 @@ public struct BattleStats
         return new BattleStats()
         {
             HP = a.HP + b.HP,
+            MP = a.MP + b.MP,
             Attack = a.Attack + b.Attack,
             Magic = a.Magic + b.Magic,
             Defense = a.Defense + b.Defense,
@@ -37,11 +41,12 @@ public struct BattleStats
         };
     }
 
-    public BattleStats With(float? HP = null, float? Attack = null, float? Magic = null, float? Defense = null, float? Quickness = null)
+    public BattleStats With(float? HP = null, float? MP = null, float? Attack = null, float? Magic = null, float? Defense = null, float? Quickness = null)
     {
         return new BattleStats()
         {
             HP = HP ?? this.HP,
+            MP = MP ?? this.MP,
             Attack = Attack ?? this.Attack,
             Magic = Magic ?? this.Magic,
             Defense = Defense ?? this.Defense,

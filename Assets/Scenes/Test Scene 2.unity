@@ -4038,6 +4038,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1189434549}
     m_Modifications:
+    - target: {fileID: 3326640188848678174, guid: cf40f6220338e1c41beec33ee228d0fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4206538807462366465, guid: cf40f6220338e1c41beec33ee228d0fa, type: 3}
       propertyPath: m_Name
       value: Portrait 2
@@ -6348,6 +6352,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1189434549}
     m_Modifications:
+    - target: {fileID: 3326640188848678174, guid: cf40f6220338e1c41beec33ee228d0fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4206538807462366465, guid: cf40f6220338e1c41beec33ee228d0fa, type: 3}
       propertyPath: m_Name
       value: Portrait 3

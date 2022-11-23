@@ -15,6 +15,8 @@ public abstract class BattleMoveComponent : MonoBehaviour
 
     public abstract List<BattleUnit> GetTargetableUnits(BattleUnit user, BattleContext context);
 
+    public abstract bool CanBeUsed(BattleUnit user, BattleContext context);
+
     #if UNITY_EDITOR
     [Button]
     [DisableInEditorMode]

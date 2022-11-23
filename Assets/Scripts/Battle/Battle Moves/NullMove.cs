@@ -30,4 +30,9 @@ public class NullMove : BattleMoveComponent
         targetableUnits.AddRange(context.EnemyUnitManager.ActiveUnits);
         return targetableUnits;
     }
+
+    public override bool CanBeUsed(BattleUnit user, BattleContext context)
+    {
+        return GetTargetableUnits(user, context).Count > 0;
+    }
 }

@@ -18,7 +18,23 @@ public class PlayerUnit : BattleUnit
         }
     }
 
+    public override float MP
+    {
+        get
+        {
+            if (BaseMember is not null) return BaseMember.MP;
+            return default;
+        }
+        set
+        {
+            if (BaseMember is null) return;
+            BaseMember.MP = value;
+            this.OnMPChange?.Invoke(BaseMember.MP);
+        }
+    }
+
     public override float InitialHP => BaseMember.BattleStats.HP;
+    public override float InitialMP => BaseMember.BattleStats.MP;
 
     public override void SetPartyMember(BasePartyMember member)
     {

@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerPartyMember : BasePartyMember
 {
     public System.Action<float> OnHPChange;
+    public System.Action<float> OnMPChange;
 
     [SerializeField]
     string _name;
@@ -18,7 +19,11 @@ public class PlayerPartyMember : BasePartyMember
 
     [SerializeField]
     float _hp;
-    public override float InitialHP => _hp;
+
+    [SerializeField]
+    float _mp;
+
+    public override float InitialHP => BattleStats.HP;
 
     [SerializeField]
     BattleStats _battleStats = BattleStats.zero;
@@ -35,6 +40,16 @@ public class PlayerPartyMember : BasePartyMember
         {
             _hp = value;
             OnHPChange?.Invoke(_hp);
+        }
+    }
+
+    public override float MP
+    {
+        get => _mp;
+        set
+        {
+            _mp = value;
+            OnMPChange?.Invoke(_mp);
         }
     }
 
@@ -62,10 +77,20 @@ public class PlayerPartyMember : BasePartyMember
     }
 
     [Button]
+    [ButtonGroup("ResetStats")]
     [DisableIf("@_playerBase == null")]
     public void ResetHP()
     {
         if (_playerBase is null) return;
         _hp = _battleStats.HP;
+    }
+
+    [Button]
+    [ButtonGroup("ResetStats")]
+    [DisableIf("@_playerBase == null")]
+    public void ResetMP()
+    {
+        if (_playerBase is null) return;
+        _mp = _battleStats.MP;
     }
 }

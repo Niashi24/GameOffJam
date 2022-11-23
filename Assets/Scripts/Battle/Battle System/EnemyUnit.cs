@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyUnit : BattleUnit
 {
     float _hp = 0;
+    float _mp = 0;
+
     public override float HP
     {
         get => _hp;
@@ -13,7 +15,19 @@ public class EnemyUnit : BattleUnit
             base.OnHPChange?.Invoke(_hp);
         }
     }
+
+    public override float MP
+    {
+        get => _mp;
+        set
+        {
+            _mp = value;
+            base.OnMPChange?.Invoke(_mp);
+        }
+    }
+
     public override float InitialHP => _baseMember.BattleStats.HP;
+    public override float InitialMP => _baseMember.BattleStats.MP;
 
     public override void SetPartyMember(BasePartyMember member)
     {
@@ -24,6 +38,7 @@ public class EnemyUnit : BattleUnit
     public void ResetUnit()
     {
         _hp = InitialHP;
+        _mp = InitialMP;
     }
 
     void OnDrawGizmos()

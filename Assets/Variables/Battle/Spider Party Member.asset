@@ -15,8 +15,10 @@ MonoBehaviour:
   _name: Spider
   _level: 4
   _hp: 16
+  _mp: 3
   _battleStats:
     HP: 16
+    MP: 3
     Attack: 16
     Magic: 0
     Defense: 2

@@ -26,6 +26,7 @@ public class CharacterPortraitManager : MonoBehaviour
         for (int i = 0; i < units.Count && i < _portraits.Count; i++)
         {
             _portraits[i].SetUnit(units[i]);
+            _portraits[i].Enable();
         }
 
         if (units.Count > _portraits.Count)

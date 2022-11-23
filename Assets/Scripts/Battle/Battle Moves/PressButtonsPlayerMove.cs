@@ -93,8 +93,16 @@ public class PressButtonsPlayerMove : BattleMoveComponent
     public override List<BattleUnit> GetTargetableUnits(BattleUnit user, BattleContext context)
     {
         List<BattleUnit> targetableUnits = new();
-        targetableUnits.AddRange(context.PlayerUnitManager.ActiveUnits);
-        targetableUnits.AddRange(context.EnemyUnitManager.ActiveUnits);
+
+        if (context.PlayerUnitManager.ActiveUnits.Contains(user))
+            targetableUnits.AddRange(context.EnemyUnitManager.ActiveUnits);
+        else
+            targetableUnits.AddRange(context.PlayerUnitManager.ActiveUnits);
         return targetableUnits;
+    }
+
+    public override bool CanBeUsed(BattleUnit user, BattleContext context)
+    {
+        return GetTargetableUnits(user, context).Count > 0;
     }
 }

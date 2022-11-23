@@ -7,9 +7,13 @@ using Sirenix.OdinInspector;
 public abstract class BattleUnit : MonoBehaviour
 {
     public abstract float InitialHP {get;}
+    public abstract float InitialMP {get;}
 
     [ShowInInspector, ReadOnly]
     public abstract float HP {get; set;}
+
+    [ShowInInspector, ReadOnly]
+    public abstract float MP {get; set;}
 
     protected BasePartyMember _baseMember;
     [ShowInInspector, ReadOnly]
@@ -20,6 +24,7 @@ public abstract class BattleUnit : MonoBehaviour
     List<BattleStatusCondition> StatusConditions => statusConditions;
 
     public Action<float> OnHPChange;
+    public Action<float> OnMPChange;
 
     public virtual void SetPartyMember(BasePartyMember member)
     {

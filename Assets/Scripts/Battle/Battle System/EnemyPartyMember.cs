@@ -18,7 +18,16 @@ public class EnemyPartyMember : BasePartyMember
         get => InitialHP;
         set
         {
-            Debug.LogError("Error! Tried to set HP of EnemyPartyMember");
+            Debug.LogError("Error! Tried to set HP of EnemyPartyMember", this);
+        }
+    }
+
+    public override float MP
+    {
+        get => BattleStats.MP;
+        set
+        {
+            Debug.LogError("Error! Tried to set MP of EnemyPartyMember", this);
         }
     }
 
