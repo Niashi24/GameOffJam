@@ -1,11 +1,17 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class BattleUnitManager : MonoBehaviour
 {
     [SerializeField]
     List<BattleUnit> _availableUnits;
+
+    [SerializeField]
+    [Required]
+    AllUnit _allUnit;
+    public AllUnit All => _allUnit;
 
     private List<BattleUnit> _activeUnits = new();
 
@@ -33,6 +39,7 @@ public class BattleUnitManager : MonoBehaviour
             _activeUnits[i].gameObject.SetActive(true);
         }
 
+        _allUnit.SetUnits(_activeUnits);
         _battleUnitPlacer?.PlaceUnits(_activeUnits);
         OnInitializeBattleUnits?.Invoke(ActiveUnits);
     }

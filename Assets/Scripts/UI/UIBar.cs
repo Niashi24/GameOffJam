@@ -52,6 +52,6 @@ public class UIBar : MonoBehaviour
     
     private void UpdateUI()
     {
-        _image.rectTransform.sizeDelta = _image.rectTransform.sizeDelta.With(x:Mathf.Ceil(Percent * _defaultValue));
+        _image.rectTransform.sizeDelta = _image.rectTransform.sizeDelta.With(x:Mathf.Floor((1-Percent) * _defaultValue));
     }
 }

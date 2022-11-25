@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38de6bd5ef4ef07438e68351baecbfe4, type: 3}
-  m_Name: Main Player Party
+  m_Script: {fileID: 11500000, guid: 58bfc6a3cce03c747ac322cf74f869d3, type: 3}
+  m_Name: Default Keybinds
   m_EditorClassIdentifier: 
-  _partyMembers:
-  - {fileID: 11400000, guid: 4cb601863618e4442b38c6134550c081, type: 2}
-  - {fileID: 11400000, guid: 5f262115dcd5d4141b510a73eebd4c24, type: 2}
+  _up: 273
+  _down: 274
+  _left: 276
+  _right: 275
+  _confirm: 122
+  _back: 120
+  _shift: 304

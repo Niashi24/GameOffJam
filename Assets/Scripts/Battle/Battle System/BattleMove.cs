@@ -46,4 +46,10 @@ public class BattleMove : ScriptableObject
     {
         return _movePrefab.GetTargetableUnits(user, context);
     } 
+
+    
+    public bool CanBeUsed(BattleUnit user, BattleContext context)
+    {
+        return _movePrefab.CanBeUsed(user, context);
+    }
 }

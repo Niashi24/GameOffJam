@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daa6a69247f35b74c8678a20e6236174, type: 3}
-  m_Name: Spider Party Member
+  m_Name: Spider Party Member 1
   m_EditorClassIdentifier: 
-  _name: Spider
+  _name: Spider (2)
   _level: 4
   _hp: 16
   _mp: 3
@@ -22,7 +22,7 @@ MonoBehaviour:
     Attack: 16
     Magic: 0
     Defense: 2
-    Quickness: 2
+    Quickness: 4
   _moves:
   - {fileID: 11400000, guid: fc418a12b0b9b52428b6d9828ac4e9d2, type: 2}
   - {fileID: 11400000, guid: 855dbc0b5326b3c4aa7eb238ea193bd2, type: 2}

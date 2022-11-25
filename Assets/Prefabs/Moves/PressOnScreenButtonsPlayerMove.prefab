@@ -446,7 +446,7 @@ MonoBehaviour:
   _buttonParent: {fileID: 1239680038738364749}
   _numButtons:
     useReference: 0
-    value: 3
+    value: 5
     reference:
       _object: {fileID: 0}
   _secondsPerButton: 2

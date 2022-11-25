@@ -40,8 +40,14 @@ public class CharacterPortrait : MonoBehaviour
     [Required]
     GameObject _toDisable;
 
+    [SerializeField]
+    [Required]
+    GameObject _highlight;
+
     [ShowInInspector, ReadOnly]
     public bool Enabled {get; private set;}
+    [ShowInInspector, ReadOnly]
+    public bool Highlighted {get; private set;}
 
     [ShowInInspector, ReadOnly]
     public BattleUnit CurrentUnit {get; private set;} = null;
@@ -60,7 +66,7 @@ public class CharacterPortrait : MonoBehaviour
         CurrentUnit.OnHPChange += OnHPChange;
         CurrentUnit.OnMPChange += OnMPChange;
 
-        _nameText.text = CurrentUnit.BaseMember.Name;
+        _nameText.text = CurrentUnit.Name;
         _healthText.text = $"{CurrentUnit.HP}/{CurrentUnit.GetBattleStats().HP}";
         _magicText.text = $"{CurrentUnit.MP}/{CurrentUnit.GetBattleStats().MP}";
     }
@@ -100,5 +106,22 @@ public class CharacterPortrait : MonoBehaviour
         _background.color = _enabledColor;
         _toDisable.SetActive(true);
         Enabled = true;
+    }
+
+    public void EnableHighlight()
+    {
+        if (!Enabled) return;
+        if (Highlighted) return;
+
+        _highlight.SetActive(true);
+        Highlighted = true;
+    }
+
+    public void DisableHighlight()
+    {
+        if (!Highlighted) return;
+        
+        _highlight.SetActive(false);
+        Highlighted = false;
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,6 +18,7 @@ public class MoveSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     Color _disabled, _enabled;
 
     [SerializeField]
+    [Required]
     Text _nameField;
 
     [SerializeField]

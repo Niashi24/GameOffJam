@@ -30,6 +30,7 @@ public class BattleManager : MonoBehaviour
     IBattleAttackChooser _enemyAttackChooser;
 
     BattleState _battleState = BattleState.BattleStart;
+    [ShowInInspector, ReadOnly]
     public BattleState BattleState => _battleState;
 
     public static ActionCoroutine<BattleState> OnBattleStateChange = new();
@@ -52,12 +53,25 @@ public class BattleManager : MonoBehaviour
     }
 
     [Button]
+    [DisableInEditorMode]
     public void StartBattle(BattleParty playerParty, BattleParty enemyParty)
     {
+        if (playerParty == null)
+        {
+            Debug.LogError("PlayerParty was null! Cannot Start Battle.", this);
+            return;
+        }
+        if (enemyParty == null)
+        {
+            Debug.LogError("EnemyParty was null! Cannot Start Battle.", this);
+            return;
+        }
+
         _context.PlayerParty = playerParty;
         _context.EnemyParty = enemyParty;
         _context.PlayerUnitManager = _playerUnitManager;
         _context.EnemyUnitManager = _enemyUnitManager;
+        _context.BattleManager = this;
 
         OnBattleFinish = null;
 
@@ -90,8 +104,10 @@ public class BattleManager : MonoBehaviour
             yield return _playerAttackChooser.WaitToChooseAttacks(_playerUnitManager, _context);
             List<BattleAttack> playerAttacks = _playerAttackChooser.ChooseAttacks(_playerUnitManager, _context);
 
-            foreach (var attack in playerAttacks.OrderBy(x => x.User.BaseMember.BattleStats.Quickness))
+            foreach (var attack in playerAttacks.OrderBy(x => x.User.GetBattleStats().Quickness).Reverse())
             {
+                if (!attack.User.CanAttack) continue;
+
                 yield return attack.PlayAttack(_context);
 
                 if (AllPlayersDown())
@@ -113,7 +129,7 @@ public class BattleManager : MonoBehaviour
             yield return _enemyAttackChooser.WaitToChooseAttacks(_enemyUnitManager, _context);
             List<BattleAttack> enemyAttacks = _enemyAttackChooser.ChooseAttacks(_enemyUnitManager, _context);
 
-            foreach (var attack in enemyAttacks.OrderBy(x => x.User.BaseMember.BattleStats.Quickness))
+            foreach (var attack in enemyAttacks.OrderBy(x => x.User.GetBattleStats().Quickness))
             {
                 yield return attack.PlayAttack(_context);
 

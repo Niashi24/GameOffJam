@@ -5,4 +5,6 @@ public class BattleContext
 
     public BattleUnitManager PlayerUnitManager;
     public BattleUnitManager EnemyUnitManager;
+
+    public BattleManager BattleManager;
 }

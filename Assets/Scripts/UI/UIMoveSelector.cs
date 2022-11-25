@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
@@ -14,25 +15,42 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
     ITargetSelector _targetSelector;
 
     [SerializeField]
+    [Required]
     GameObject _descriptionField;
 
+    [SerializeField]
+    [Required]
+    Keybinds _keybinds;
+
+    BattleUnit currentUnit = null;
     BattleAttack currentAttack = null;
+    BattleContext currentContext = null;
 
     BattleMove selectedMove = null;
+
+    public System.Action<BattleUnit> OnStartCreateAttack;
+    //bool is whether it was successful creating attack
+    public System.Action<BattleUnit, bool> OnFinishCreateAttack;
 
     public IEnumerator WaitToChooseAttacks(BattleUnitManager unitManager, BattleContext context)
     {
         _descriptionField.SetActive(true);
+        currentContext = context;
 
         attacks = new();
 
         var activeUnits = unitManager.ActiveUnits;
         for (int i = 0; i < activeUnits.Count; i++)
         {
-            yield return CreateAttack(activeUnits[i], context);
+            if (!activeUnits[i].CanAttack) continue;
+            currentUnit = activeUnits[i];
+
+            OnStartCreateAttack?.Invoke(currentUnit);
+            yield return CreateAttack(currentUnit, context);
             
             if (currentAttack == null)
             {
+                OnFinishCreateAttack?.Invoke(currentUnit, false);
                 //if not first unit, go to previous
                 if (i > 0) i -= 2;
                 //if first unit, just redo first unit
@@ -40,8 +58,10 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
             }
             else 
             {
+                OnFinishCreateAttack?.Invoke(currentUnit, true);
                 attacks.Add(currentAttack);
                 currentAttack = null;
+                currentUnit = null;
             }
         }
         _descriptionField.SetActive(true);
@@ -49,15 +69,15 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
 
     IEnumerator CreateAttack(BattleUnit unit, BattleContext context)
     {
-        _moveDisplayer.DisplayMoves(unit.BaseMember.Moves);
+        _moveDisplayer.DisplayMoves(unit.Moves);
         gameObject.SetActive(true);
 
         while (selectedMove == null)
         {
-            //wait until move selection
+            //wait until move selection called by MoveSelection
             yield return null;
             //can cancel selection
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(_keybinds.Back))
             {
                 gameObject.SetActive(false);
                 yield break; //exit attack selection (go back to previous character)
@@ -72,7 +92,7 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
         {
             yield return null;
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(_keybinds.Back))
             {
                 selectedMove = null;
                 _targetSelector.SetActive(false);
@@ -94,12 +114,13 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
 
     void LoadUnit(BattleUnit unit)
     {
-        _moveDisplayer.DisplayMoves(unit.BaseMember.Moves);
+        _moveDisplayer.DisplayMoves(unit.Moves);
     }
 
     public void SelectMove(BattleMove move)
     {
-        selectedMove = move;
+        if (move.CanBeUsed(currentUnit, currentContext))
+            selectedMove = move;
     }
 
     public void SelectAttack(BattleAttack attack)

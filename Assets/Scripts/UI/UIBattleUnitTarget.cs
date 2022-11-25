@@ -65,7 +65,7 @@ public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void EnableOutline()
     {
         _outline.color = _enabled;
-        _descriptionField.text = Target.BaseMember.Name;
+        _descriptionField.text = Target.Name;
         OnEnableOutline?.Invoke();
     }
 

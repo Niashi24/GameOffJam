@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 public class PlayerBase : SerializedScriptableObject
 {
     [SerializeField]
-    Dictionary<int, BattleMove> _attacksByLevel;
+    Dictionary<BattleMove, int> _attacksByLevel;
 
     [SerializeField]
     PartyMemberStatGrowth _statGrowthCurve;
@@ -16,7 +16,7 @@ public class PlayerBase : SerializedScriptableObject
     public List<BattleMove> GetAttacksWithLevel(int level)
     {
         List<BattleMove> output = new();
-        foreach (var (lvl, atk) in _attacksByLevel)
+        foreach (var (atk, lvl) in _attacksByLevel)
         {
             if (level >= lvl)
                 output.Add(atk);
@@ -30,7 +30,7 @@ public class PlayerBase : SerializedScriptableObject
         List<BattleMove> output = new();
         if (_attacksByLevel is null)
             return output;
-        foreach (var (lvl, atk) in _attacksByLevel)
+        foreach (var (atk, lvl) in _attacksByLevel)
             if (level == lvl)
                 output.Add(atk);
         return output;

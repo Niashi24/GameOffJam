@@ -81,4 +81,9 @@ public static class RigidbodyExtensions
         list.RemoveAt(list.Count - 1);
         return obj;
     }
+
+    public static bool IsInBounds(this IList list, int index)
+    {
+        return index >= 0 && index < list.Count;
+    }
 }

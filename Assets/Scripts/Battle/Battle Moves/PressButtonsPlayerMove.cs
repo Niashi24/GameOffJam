@@ -8,9 +8,11 @@ using UnityEngine.Pool;
 public class PressButtonsPlayerMove : BattleMoveComponent
 {
     [SerializeField]
+    [Required]
     PressButtonsMoveButtonScript _buttonPrefab;
 
     [SerializeField]
+    [Required]
     Transform _buttonParent;
 
     [SerializeField]
@@ -26,15 +28,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
 
     void Awake()
     {
-        buttonPool = new ObjectPool<PressButtonsMoveButtonScript>
-        (
-            () => Instantiate(
-                    _buttonPrefab, _buttonParent.position, Quaternion.identity, _buttonParent
-                ),
-            (x) => x.gameObject.SetActive(true),
-            (x) => x.gameObject.SetActive(false),
-            (x) => Destroy(x.gameObject)
-        );
+        buttonPool = _buttonPrefab.CreateMonoPool(position: _buttonParent.position, parent: _buttonParent);
     }
 
     public override IEnumerator PlayAttack(BattleContext context, BattleAttack playerMove)
@@ -49,8 +43,8 @@ public class PressButtonsPlayerMove : BattleMoveComponent
             buttons[i].OnFirstPress += () => _buttonsPressed++;
             const float w = 60;
 
-            buttons[i].transform.position = buttons[i].transform.position.With(
-                x: _buttonParent.position.x + (i+1)/2 * w * Mathf.Pow(-1, i+1)
+            buttons[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(
+                (i+1)/2 * w * Mathf.Pow(-1, i+1), 0, 0
             );
         }
 
@@ -85,7 +79,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
     public override IEnumerator PlayEffect(BattleContext context, BattleAttack playerMove, float attackScore)
     {
         //TODO: play damage animation
-        playerMove.Target.DealDamage(DamageCalculator.CalculateDamage(playerMove, attackScore));
+        playerMove.Target.DealDamage(playerMove, attackScore);
 
         yield break;
     }
@@ -94,10 +88,10 @@ public class PressButtonsPlayerMove : BattleMoveComponent
     {
         List<BattleUnit> targetableUnits = new();
 
-        if (context.PlayerUnitManager.ActiveUnits.Contains(user))
-            targetableUnits.AddRange(context.EnemyUnitManager.ActiveUnits);
-        else
-            targetableUnits.AddRange(context.PlayerUnitManager.ActiveUnits);
+        // if (context.PlayerUnitManager.ActiveUnits.Contains(user))
+            targetableUnits.Add(context.EnemyUnitManager.All);
+        // else
+            targetableUnits.Add(context.PlayerUnitManager.All);
         return targetableUnits;
     }
 
