@@ -3801,7 +3801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetGroup: {fileID: 1891894267}
   _camera: {fileID: 1694054057}
   _outline: {fileID: 1042384662}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
@@ -4395,7 +4394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetGroup: {fileID: 1891894267}
   _camera: {fileID: 1694054057}
   _outline: {fileID: 1247575021}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
@@ -5720,7 +5718,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetGroup: {fileID: 1891894267}
   _camera: {fileID: 1694054057}
   _outline: {fileID: 1167070335}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
@@ -7876,7 +7873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetGroup: {fileID: 1891894267}
   _camera: {fileID: 1694054057}
   _outline: {fileID: 554533948}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
@@ -8284,7 +8280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetGroup: {fileID: 1891894267}
   _camera: {fileID: 1694054057}
   _outline: {fileID: 2020692478}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
@@ -8340,7 +8335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetGroup: {fileID: 1891894267}
   _camera: {fileID: 1694054057}
   _outline: {fileID: 1770418736}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
@@ -8748,7 +8742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetGroup: {fileID: 1891894267}
   _camera: {fileID: 1694054057}
   _outline: {fileID: 2107774871}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
@@ -10151,6 +10144,7 @@ MonoBehaviour:
   - {fileID: 753969203}
   - {fileID: 1150921893}
   _moveSelector: {fileID: 664978503}
+  _keybinds: {fileID: 11400000, guid: f4627fce78813b34bb2ab30625db8460, type: 2}
 --- !u!1 &1893767228
 GameObject:
   m_ObjectHideFlags: 0
@@ -11080,7 +11074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetGroup: {fileID: 1891894267}
   _camera: {fileID: 1694054057}
   _outline: {fileID: 1381500214}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}

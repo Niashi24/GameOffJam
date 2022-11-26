@@ -8,11 +8,12 @@ using UnityEngine.UI;
 public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField]
-    UITargetSelector _targetGroup;
-
-    [SerializeField]
     Camera _camera;
 
+    [ShowInInspector, ReadOnly]
+    public UITargetSelector TargetGroup {get; private set;}
+
+    [ShowInInspector, ReadOnly]
     public BattleUnit Target {get; private set;}
 
     [SerializeField]
@@ -40,15 +41,16 @@ public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerE
     }
 
     [Button]
-    public void SetTarget(BattleUnit target)
+    public void SetTarget(BattleUnit target, UITargetSelector targetGroup)
     {
         Target = target;
+        TargetGroup = targetGroup;
         transform.position = _camera.WorldToScreenPoint(target.transform.position);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        _targetGroup.SelectTarget(Target);
+        Select();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -73,5 +75,11 @@ public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void DisableOutline()
     {
         _outline.color = _disabled;
+    }
+
+    public void Select()
+    {
+        DisableOutline();
+        TargetGroup?.SelectTarget(Target);
     }
 }

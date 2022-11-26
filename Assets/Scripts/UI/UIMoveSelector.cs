@@ -83,6 +83,7 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
                 yield break; //exit attack selection (go back to previous character)
             }
         }
+
         gameObject.SetActive(false);
 
         _targetSelector.SetActive(true);
