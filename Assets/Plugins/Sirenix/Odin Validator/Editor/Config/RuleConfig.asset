@@ -15,6 +15,20 @@ MonoBehaviour:
   projectRules:
   - Enabled: 1
     EnabledOverridden: 1
+    Type: Sirenix.OdinValidator.Editor.Validators.SceneNotInBuildSettingsValidator,
+      Sirenix.OdinValidator.Editor
+    Override: 
+  - Enabled: 1
+    EnabledOverridden: 1
+    Type: Sirenix.OdinValidator.Editor.Validators.ReferenceRequiredByDefaultValidator,
+      Sirenix.OdinValidator.Editor
+    Override: 
+  - Enabled: 1
+    EnabledOverridden: 1
+    Type: Sirenix.OdinValidator.Editor.Validators.ListNullElementValidator, Sirenix.OdinValidator.Editor
+    Override: 
+  - Enabled: 1
+    EnabledOverridden: 1
     Type: Sirenix.OdinValidator.Editor.Validators.DuplicateComponentsValidator, Sirenix.OdinValidator.Editor
     Override: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|Sirenix.OdinValidator.Editor.Validators.DuplicateComponentsValidator,
       Sirenix.OdinValidator.Editor\",\r\n    \"Severity\": 1,\r\n    \"TypeExceptions\":

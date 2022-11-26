@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIBar : MonoBehaviour
+public class UIBar : MonoBehaviour, IValueBar
 {
     [SerializeField]
     Image _image;
@@ -25,17 +25,6 @@ public class UIBar : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-
-    }
-
-    [Button]
-    void SetDefaultValue()
-    {
-        _defaultValue = _image.rectTransform.sizeDelta.x;
-    }
-
     [Button]
     public void SetValue(float value)
     {
@@ -54,4 +43,14 @@ public class UIBar : MonoBehaviour
     {
         _image.rectTransform.sizeDelta = _image.rectTransform.sizeDelta.With(x:Mathf.Floor((1-Percent) * _defaultValue));
     }
+
+    #if UNITY_EDITOR
+    [Button]
+    void SetDefaultValue(Image _background, int borderSize = 1)
+    {
+        if (_background is null) return;
+
+        _defaultValue = _background.rectTransform.sizeDelta.x - borderSize * 2;
+    }
+    #endif
 }

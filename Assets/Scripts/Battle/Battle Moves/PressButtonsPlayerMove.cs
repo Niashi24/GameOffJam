@@ -81,7 +81,7 @@ public class PressButtonsPlayerMove : BattleMoveComponent
         //TODO: play damage animation
         playerMove.Target.DealDamage(playerMove, attackScore);
 
-        yield break;
+        yield return new WaitForSeconds(2);
     }
 
     public override List<BattleUnit> GetTargetableUnits(BattleUnit user, BattleContext context)
