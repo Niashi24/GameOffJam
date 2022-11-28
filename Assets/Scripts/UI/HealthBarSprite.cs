@@ -42,12 +42,12 @@ public class HealthBarSprite : MonoBehaviour, IValueBar
 
     private void UpdateUI()
     {
-        SetPixels((int)((1 - Percent) * _fullValue));
+        SetPixels((int)((1 - Percent) * _fullValue * 2) / 2);
     }
 
     private void SetPixels(int numFill)
     {
-        _fill.localPosition = _fill.localPosition.With(x: (_fullValue - numFill) / 2.0f);
-        _fill.localScale = _fill.localScale.With(x: numFill / 2.0f);
+        _fill.localPosition = _fill.localPosition.With(x: Mathf.Ceil((_fullValue - numFill)/2.0f));
+        _fill.localScale = _fill.localScale.With(x: Mathf.Ceil(numFill / 2.0f) * 2);
     }
 }
