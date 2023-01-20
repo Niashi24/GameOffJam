@@ -67,6 +67,41 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
         _descriptionField.SetActive(true);
     }
 
+    public IEnumerator WaitToChooseAttacks2(BattleUnitManager unitManager, BattleContext context)
+    {
+        _descriptionField.SetActive(true);
+        currentContext = context;
+
+        attacks = new();
+
+        var activeUnits = unitManager.ActiveUnits;
+        for (int i = 0; i < activeUnits.Count; i++)
+        {
+            if (!activeUnits[i].CanAttack) continue;
+            currentUnit = activeUnits[i];
+
+            OnStartCreateAttack?.Invoke(currentUnit);
+            yield return CreateAttack(currentUnit, context);
+            
+            if (currentAttack == null)
+            {
+                OnFinishCreateAttack?.Invoke(currentUnit, false);
+                //if not first unit, go to previous
+                if (i > 0) i -= 2;
+                //if first unit, just redo first unit
+                else i--;
+            }
+            else 
+            {
+                OnFinishCreateAttack?.Invoke(currentUnit, true);
+                attacks.Add(currentAttack);
+                currentAttack = null;
+                currentUnit = null;
+            }
+        }
+        _descriptionField.SetActive(true);
+    }
+
     IEnumerator CreateAttack(BattleUnit unit, BattleContext context)
     {
         _moveDisplayer.DisplayMoves(unit.Moves);
