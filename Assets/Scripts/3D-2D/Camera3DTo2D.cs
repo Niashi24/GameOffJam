@@ -42,7 +42,7 @@ public class Camera3DTo2D : MonoBehaviour
         Vector2 size = _sizeReference.Size;
         Vector2 halfSize = size / 2;
 
-        Vector3 position = _2DCamera.ScreenToWorldPoint(_3DCamera.WorldToScreenPoint(_3DAnchor.position))
+        Vector3 position = _2DCamera.ViewportToWorldPoint(_3DCamera.WorldToViewportPoint(_3DAnchor.position))
             .With(z: _z);
 
         position += new Vector3(-xType * halfSize.x, yType * halfSize.y);
