@@ -6,26 +6,20 @@ using UnityEngine;
 public class BattleCamera : MonoBehaviour
 {
     [Header("Restrictions")]
+
     [SerializeField]
-    float _minX = -100;
+    Vector2 _minMaxX;
     [SerializeField]
-    float _maxX = 100;
+    Vector2 _minMaxY;
     [SerializeField]
-    float _minY = -130;
+    Vector2 _minMaxZ;
+
     [SerializeField]
-    float _maxY = -75;
+    [Tooltip("Offset from Target. Y-Value is Ignored")]
+    Vector3 _targetOffset;
 
     [SerializeField]
     float _smoothTime = 0.3f;
-
-    [SerializeField]
-    float _offsetZ = -130;
-
-    [ShowInInspector, ReadOnly]
-    private float targetX = 0;
-
-    [ShowInInspector, ReadOnly]
-    private float velocity = 0;
 
     [ShowInInspector, ReadOnly]
     private Vector3 vel = Vector2.zero;
@@ -40,10 +34,6 @@ public class BattleCamera : MonoBehaviour
 
     void Update()
     {
-        // transform.localPosition = transform.localPosition.With(
-        //     x: Mathf.SmoothDamp(transform.localPosition.x, targetX, ref velocity, _smoothTime)
-        // );
-
         transform.localPosition = Vector3.SmoothDamp(
             transform.localPosition,
             targetPos,
@@ -56,10 +46,11 @@ public class BattleCamera : MonoBehaviour
     [DisableInEditorMode]
     public void SetTargetLocation(Vector3 position)
     {
+        position += _targetOffset;
         targetPos = new Vector3(
-            Mathf.Clamp(position.x, _minX, _maxX),
-            transform.localPosition.y,
-            Mathf.Clamp(position.z + _offsetZ, _minY, _maxY)
+            Mathf.Clamp(position.x, _minMaxX.x, _minMaxX.y),
+            Mathf.Clamp(position.y, _minMaxY.x, _minMaxY.y),
+            Mathf.Clamp(position.z, _minMaxZ.x, _minMaxZ.y)
         );
     }
 
@@ -67,6 +58,7 @@ public class BattleCamera : MonoBehaviour
     [DisableInEditorMode]
     public void SetTargetTransform(Transform target)
     {
+        if (target == null) return;
         SetTargetLocation(target.position - transform.parent.position);
     }
 }
