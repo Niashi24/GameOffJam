@@ -50,7 +50,7 @@ public class Camera3DTo2D : MonoBehaviour
         transform.position = position;
     }
 
-    void OnGizmosDrawSelected()
+    void OnDrawGizmosSelected()
     {
         if (_3DAnchor == null) return;
         Debug.DrawLine(transform.position, _3DAnchor.position, Color.green, Time.deltaTime);
