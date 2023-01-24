@@ -49,12 +49,6 @@ public class Camera3DTo2D : MonoBehaviour
         transform.position = position;
     }
 
-    void OnDrawGizmosSelected()
-    {
-        if (_3DAnchor == null) return;
-        Debug.DrawLine(transform.position, _3DAnchor.position, Color.green, Time.deltaTime);
-    }
-
     public enum TransformationAnchor
     {
         TOP_LEFT = 0, TOP_MIDDLE = 1, TOP_RIGHT = 2,

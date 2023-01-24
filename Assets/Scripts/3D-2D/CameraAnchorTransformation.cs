@@ -30,7 +30,7 @@ public class CameraAnchorTransformation : MonoBehaviour
     [Tooltip("Anchor position is transferred from Input Camera using Input type into Middle Type")]
     CameraPositionType _inputCameraType;
     [SerializeField]
-    CameraPositionType _middleCameraType;
+    CameraPositionType _middleCameraType = CameraPositionType.SCREEN_POINT;
     [SerializeField]
     [Tooltip("Translated position is transferred from Middle Type into output position using Output Camera")]
     CameraPositionType _outputCameraType;
@@ -57,12 +57,6 @@ public class CameraAnchorTransformation : MonoBehaviour
     public void SetAnchor(Transform anchor)
     {
         this._anchor = anchor;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (_anchor == null) return;
-        Debug.DrawLine(transform.position, _anchor.position, Color.green, Time.deltaTime);
     }
 
     [ContextMenu("Use Manual Size")]
