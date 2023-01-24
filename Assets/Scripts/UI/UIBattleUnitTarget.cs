@@ -8,7 +8,12 @@ using UnityEngine.UI;
 public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField]
-    Camera _camera;
+    [Required]
+    Camera _inputCamera;
+
+    [SerializeField]
+    [Required]
+    Camera _outputCamera;
 
     [ShowInInspector, ReadOnly]
     public UITargetSelector TargetGroup {get; private set;}
@@ -45,7 +50,14 @@ public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         Target = target;
         TargetGroup = targetGroup;
-        transform.position = _camera.WorldToScreenPoint(target.transform.position);
+        transform.position = _outputCamera.ViewportToScreenPoint(_inputCamera.WorldToViewportPoint(Target.transform.position));
+    }
+
+    void Update()
+    {
+        if (Target == null) return;
+        if (TargetGroup == null) return;
+        transform.position = _outputCamera.ViewportToScreenPoint(_inputCamera.WorldToViewportPoint(Target.transform.position));
     }
 
     public void OnPointerClick(PointerEventData eventData)
