@@ -1,3 +1,5 @@
+using SaturnRPG.Battle.Camera;
+
 public class BattleContext
 {
     public BattleParty PlayerParty;
@@ -7,4 +9,6 @@ public class BattleContext
     public BattleUnitManager EnemyUnitManager;
 
     public BattleManager BattleManager;
+
+    public BattleCamera BattleCamera;
 }

@@ -33,6 +33,10 @@ public class PressButtonsPlayerMove : BattleMoveComponent
 
     public override IEnumerator PlayAttack(BattleContext context, BattleAttack playerMove)
     {
+        yield return new WaitForSeconds(1);
+        context.BattleCamera.SetTargetTransform(playerMove.Target.transform);
+        yield return new WaitForSeconds(1);
+
         int numButtons = _numButtons.Value;
         // List<PressButtonsMoveButtonScript> buttons = new(numButtons);
         PressButtonsMoveButtonScript[] buttons = new PressButtonsMoveButtonScript[numButtons];

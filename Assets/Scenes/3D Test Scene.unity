@@ -9744,6 +9744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerUnitManager: {fileID: 90503466}
   _enemyUnitManager: {fileID: 465343379}
+  _battleCamera: {fileID: 1543439061}
   _playerAttackChooser:
     rid: 1030492411035123714
   _enemyAttackChooser:
@@ -13644,6 +13645,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001192759}
   m_CullTransparentMesh: 1
+--- !u!1 &1008596850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008596851}
+  - component: {fileID: 1008596852}
+  - component: {fileID: 1008596853}
+  - component: {fileID: 1008596854}
+  m_Layer: 8
+  m_Name: Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1008596851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008596850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1543439060}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1008596852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008596850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbcfe67171da56408e7a3f06539fe7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battleCamera: {fileID: 1543439061}
+  _UITargetSelector: {fileID: 1891894267}
+--- !u!114 &1008596853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008596850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a331ad89ec78ae4d9d499b4899e3aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battleCamera: {fileID: 1543439061}
+  _UIMoveSelector: {fileID: 664978503}
+--- !u!114 &1008596854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008596850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ceb27768ae27764d91a824e68a88f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battleCamera: {fileID: 1543439061}
+  _battleManager: {fileID: 396537731}
 --- !u!1 &1011574511
 GameObject:
   m_ObjectHideFlags: 0
@@ -17403,7 +17480,8 @@ Transform:
   m_LocalPosition: {x: 129.9, y: 120, z: -139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1008596851}
   m_Father: {fileID: 541214133}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
@@ -17693,7 +17771,7 @@ GameObject:
   - component: {fileID: 1606793444}
   - component: {fileID: 1606793443}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: 3D Render Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

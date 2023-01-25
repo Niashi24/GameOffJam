@@ -24,7 +24,7 @@ public class UITargetSelector : MonoBehaviour, ITargetSelector
     public List<UIBattleUnitTarget> ActiveTargetsX {get; private set;}
     [ShowInInspector, ReadOnly] //Active Targets sorted by Y
     public List<UIBattleUnitTarget> ActiveTargetsY {get; private set;}
-    //stored when DisplayTargets is called so can createe Attack late
+    // Stored when DisplayTargets is called so can createe Attack late
     BattleMove currentMove = null;
     BattleUnit currentUser = null;
 
@@ -32,6 +32,7 @@ public class UITargetSelector : MonoBehaviour, ITargetSelector
     int selectedTargetIndexY = 0;
 
     public System.Action<List<UIBattleUnitTarget>> OnDisplayTargets;
+    public System.Action<List<BattleUnit>> OnDisplayTargetableUnits;
 
     public void DisplayTargets(BattleMove move, BattleUnit user, BattleContext context)
     {
@@ -65,9 +66,10 @@ public class UITargetSelector : MonoBehaviour, ITargetSelector
             ActiveTargetsX[selectedTargetIndexX].EnableOutline();
 
         OnDisplayTargets?.Invoke(ActiveTargets);
+        OnDisplayTargetableUnits?.Invoke(targets);
     }
 
-    //called by target
+    // Called by selected target if using mouse to select
     public void SelectTarget(BattleUnit target)
     {
         BattleAttack attack = new BattleAttack()

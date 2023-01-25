@@ -7,6 +7,7 @@ public class NullMove : BattleMoveComponent
 
     public override IEnumerator PlayAttack(BattleContext context, BattleAttack battleAttack)
     {
+        yield return new WaitForSeconds(1);
         Debug.LogWarning("Played Null Move Attack.");
         yield break;
     }

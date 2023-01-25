@@ -80,7 +80,6 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
             if (!activeUnits[i].CanAttack) continue;
             currentUnit = activeUnits[i];
 
-            OnStartCreateAttack?.Invoke(currentUnit);
             yield return CreateAttack(currentUnit, context);
             
             if (currentAttack == null)
@@ -104,6 +103,7 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
 
     IEnumerator CreateAttack(BattleUnit unit, BattleContext context)
     {
+        OnStartCreateAttack?.Invoke(currentUnit);
         _moveDisplayer.DisplayMoves(unit.Moves);
         gameObject.SetActive(true);
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
 using System.Linq;
+using SaturnRPG.Battle.Camera;
 
 public class BattleManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     [Required]
     BattleUnitManager _enemyUnitManager;
+
+    [SerializeField]
+    [Required]
+    BattleCamera _battleCamera;
 
     [ShowInInspector, ReadOnly]
     BattleContext _context = new();
@@ -40,6 +45,9 @@ public class BattleManager : MonoBehaviour
     public Action<bool> OnBattleFinish;
 
     public Action<int> OnTurnFinish;
+
+    public Action<BattleAttack> OnBeforeAttack;
+    public Action<BattleAttack> OnAfterAttack;
 
     void Start()
     {
@@ -72,6 +80,7 @@ public class BattleManager : MonoBehaviour
         _context.PlayerUnitManager = _playerUnitManager;
         _context.EnemyUnitManager = _enemyUnitManager;
         _context.BattleManager = this;
+        _context.BattleCamera = _battleCamera;
 
         OnBattleFinish = null;
 
@@ -107,9 +116,9 @@ public class BattleManager : MonoBehaviour
             foreach (var attack in playerAttacks.OrderBy(x => x.User.GetBattleStats().Quickness).Reverse())
             {
                 if (!attack.User.CanAttack) continue;
-
+                OnBeforeAttack?.Invoke(attack);
                 yield return attack.PlayAttack(_context);
-
+                OnAfterAttack?.Invoke(attack);
                 if (AllPlayersDown())
                 {
                     yield return EndBattle(false);
@@ -131,8 +140,10 @@ public class BattleManager : MonoBehaviour
 
             foreach (var attack in enemyAttacks.OrderBy(x => x.User.GetBattleStats().Quickness))
             {
+                if (!attack.User.CanAttack) continue;
+                OnBeforeAttack?.Invoke(attack);
                 yield return attack.PlayAttack(_context);
-
+                OnAfterAttack?.Invoke(attack);
                 if (AllPlayersDown())
                 {
                     yield return EndBattle(false);
