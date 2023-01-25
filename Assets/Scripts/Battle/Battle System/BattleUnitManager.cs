@@ -36,12 +36,26 @@ public class BattleUnitManager : MonoBehaviour
         {
             _activeUnits.Add(_availableUnits[i]);
             _activeUnits[i].SetPartyMember(battleParty.PartyMembers[i]);
-            _activeUnits[i].gameObject.SetActive(true);
+            _activeUnits[i].SetActive(true);
         }
+
+        SetAllUnitToMiddle();
 
         _allUnit.SetUnits(_activeUnits);
         _battleUnitPlacer?.PlaceUnits(_activeUnits);
         OnInitializeBattleUnits?.Invoke(ActiveUnits);
+    }
+
+    private void SetAllUnitToMiddle()
+    {
+        if (ActiveUnits.Count == 0) return;
+
+        Vector3 averagePosition = Vector2.one;
+        foreach (var unit in ActiveUnits)
+            averagePosition += unit.transform.position;
+        averagePosition /= ActiveUnits.Count;
+
+        _allUnit.transform.position = averagePosition;
     }
 
     protected virtual void AddMoreUnits(int count)

@@ -33,8 +33,12 @@ public abstract class BattleUnit : MonoBehaviour
     [ShowInInspector, ReadOnly]
     List<BattleStatusCondition> StatusConditions => statusConditions;
 
+    public Action<BattleUnit, BasePartyMember> OnSetPartyMember;
+
     public Action<float> OnHPChange;
     public Action<float> OnMPChange;
+
+    public Action<bool> OnSetActive;
 
     public abstract void SetPartyMember(BasePartyMember member);
     protected abstract BattleStats BaseStats {get;}
@@ -55,6 +59,12 @@ public abstract class BattleUnit : MonoBehaviour
     }
 
     public abstract void DealDamage(BattleAttack playerAttack, float attackScore);
+
+    public virtual void SetActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+        OnSetActive?.Invoke(isActive);
+    }
 
     public void AddStatusCondition(BattleStatusCondition condition)
     {

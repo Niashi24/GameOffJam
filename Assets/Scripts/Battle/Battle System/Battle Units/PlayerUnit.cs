@@ -57,6 +57,7 @@ public class PlayerUnit : BattleUnit
     public override void SetPartyMember(BasePartyMember member)
     {
         _baseMember = member;
+        OnSetPartyMember?.Invoke(this, member);
     }
 
     public override void DealDamage(BattleAttack playerAttack, float attackScore)

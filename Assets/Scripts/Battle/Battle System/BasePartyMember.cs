@@ -1,8 +1,13 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public abstract class BasePartyMember : ScriptableObject
 {
+    [field: SerializeField]
+    [field: Required]
+    public Sprite BattleSprite {get; private set;}
+
     public abstract float InitialHP {get;}
 
     public abstract float HP {get; set;}

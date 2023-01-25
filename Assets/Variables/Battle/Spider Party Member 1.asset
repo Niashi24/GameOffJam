@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa6a69247f35b74c8678a20e6236174, type: 3}
   m_Name: Spider Party Member 1
   m_EditorClassIdentifier: 
+  <BattleSprite>k__BackingField: {fileID: 21300000, guid: 6aeb936579ec327419c6afeb1d2ef724, type: 3}
   _name: Spider (2)
   _level: 4
   _hp: 16

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class EnemyUnit : BattleUnit
@@ -57,6 +58,7 @@ public class EnemyUnit : BattleUnit
     {
         _baseMember = member;
         ResetUnit();
+        OnSetPartyMember?.Invoke(this, member);
     }
     
     public void ResetUnit()
