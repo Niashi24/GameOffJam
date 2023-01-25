@@ -12,11 +12,13 @@ public abstract class BattleUnitVisual : MonoBehaviour
     public virtual void OnEnable()
     {
         _battleUnit.OnSetPartyMember += SetVisual;
+        _battleUnit.OnSetActive += SetActive;
     }
 
     public virtual void OnDisable()
     {
         _battleUnit.OnSetPartyMember -= SetVisual;
+        _battleUnit.OnSetActive -= SetActive;
     }
 
     public abstract void SetVisual(BattleUnit unit, BasePartyMember partyMember);

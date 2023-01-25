@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 59884805}
   - component: {fileID: 59884807}
   - component: {fileID: 59884806}
+  - component: {fileID: 59884808}
   m_Layer: 5
   m_Name: Description Field
   m_TagString: Untagged
@@ -517,6 +518,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59884804}
   m_CullTransparentMesh: 1
+--- !u!114 &59884808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59884804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14fae0bf242ba54d9731b155759e85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 603871313}
+  _background: {fileID: 59884806}
 --- !u!1 &77772166
 GameObject:
   m_ObjectHideFlags: 0
@@ -9483,7 +9498,7 @@ MonoBehaviour:
   _sizeReference:
     rid: 6753585796073390081
   _inputCameraType: 0
-  _middleCameraType: 1
+  _middleCameraType: 2
   _outputCameraType: 0
   references:
     version: 2
@@ -9788,7 +9803,7 @@ MonoBehaviour:
   _sizeReference:
     rid: 6753585796073390081
   _inputCameraType: 0
-  _middleCameraType: 1
+  _middleCameraType: 2
   _outputCameraType: 0
   references:
     version: 2
@@ -10886,7 +10901,7 @@ MonoBehaviour:
   _sizeReference:
     rid: 6753585796073390081
   _inputCameraType: 0
-  _middleCameraType: 1
+  _middleCameraType: 2
   _outputCameraType: 0
   references:
     version: 2
@@ -15602,7 +15617,7 @@ MonoBehaviour:
   _sizeReference:
     rid: 6753585796073390081
   _inputCameraType: 0
-  _middleCameraType: 1
+  _middleCameraType: 2
   _outputCameraType: 0
   references:
     version: 2
@@ -17003,7 +17018,7 @@ MonoBehaviour:
   _sizeReference:
     rid: 6753585796073390081
   _inputCameraType: 0
-  _middleCameraType: 1
+  _middleCameraType: 2
   _outputCameraType: 0
   references:
     version: 2
@@ -17461,7 +17476,7 @@ MonoBehaviour:
   _sizeReference:
     rid: 6753585796073390081
   _inputCameraType: 0
-  _middleCameraType: 1
+  _middleCameraType: 2
   _outputCameraType: 0
   references:
     version: 2
@@ -21442,7 +21457,7 @@ GameObject:
   - component: {fileID: 1993107433}
   - component: {fileID: 1993107432}
   m_Layer: 5
-  m_Name: Main Canvas
+  m_Name: Battle Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

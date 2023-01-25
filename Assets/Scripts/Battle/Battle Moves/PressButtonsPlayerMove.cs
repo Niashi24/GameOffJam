@@ -92,9 +92,9 @@ public class PressButtonsPlayerMove : BattleMoveComponent
     {
         List<BattleUnit> targetableUnits = new();
 
-        // if (context.PlayerUnitManager.ActiveUnits.Contains(user))
+        if (context.PlayerUnitManager.ActiveUnits.Contains(user))
             targetableUnits.Add(context.EnemyUnitManager.All);
-        // else
+        else
             targetableUnits.Add(context.PlayerUnitManager.All);
         return targetableUnits;
     }

@@ -24,7 +24,7 @@ public class BattleUnitManager : MonoBehaviour
 
     public void InitializeBattleUnits(BattleParty battleParty)
     {
-        _availableUnits.ForEach(x => x.gameObject.SetActive(false));
+        _availableUnits.ForEach(x => x.SetActive(false));
         _activeUnits.Clear();
 
         if (battleParty.PartyMembers.Count > _availableUnits.Count)
