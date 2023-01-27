@@ -20,6 +20,10 @@ public class BattleManager : MonoBehaviour
     [Required]
     BattleCamera _battleCamera;
 
+    [SerializeField]
+    [Required]
+    DescriptionField _descriptionField;
+
     [ShowInInspector, ReadOnly]
     BattleContext _context = new();
 
@@ -81,6 +85,7 @@ public class BattleManager : MonoBehaviour
         _context.EnemyUnitManager = _enemyUnitManager;
         _context.BattleManager = this;
         _context.BattleCamera = _battleCamera;
+        _context.DescriptionField = _descriptionField;
 
         OnBattleFinish = null;
 

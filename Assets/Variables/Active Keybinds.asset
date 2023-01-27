@@ -16,6 +16,6 @@ MonoBehaviour:
   _down: 274
   _left: 276
   _right: 275
-  _confirm: 122
-  _back: 120
+  _confirm: 32
+  _back: 27
   _shift: 304

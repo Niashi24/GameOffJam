@@ -7,7 +7,10 @@ public class NullMove : BattleMoveComponent
 
     public override IEnumerator PlayAttack(BattleContext context, BattleAttack battleAttack)
     {
+        context.DescriptionField.SetText(battleAttack.MoveBase.MoveName);
+        context.DescriptionField.SetActive(true);
         yield return new WaitForSeconds(1);
+        context.DescriptionField.SetActive(false);
         Debug.LogWarning("Played Null Move Attack.");
         yield break;
     }

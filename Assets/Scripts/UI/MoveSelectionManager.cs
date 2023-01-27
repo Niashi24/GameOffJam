@@ -20,7 +20,7 @@ public class MoveSelectionManager : MonoBehaviour, IMoveDisplayer
 
     [ShowInInspector, ReadOnly]
     public MovePageDisplayer currentDisplayer => _pageDisplayers[currentPageIndex];
-    
+
     void OnEnable()
     {
         foreach (var page in _pageDisplayers)
@@ -97,6 +97,7 @@ public class MoveSelectionManager : MonoBehaviour, IMoveDisplayer
 
         currentSelectionIndex += num;
 
+        // Loop around
         while (currentSelectionIndex < 0)
             currentSelectionIndex += currentDisplayer.NumberOfCurrentMoves;
         if (currentDisplayer.NumberOfCurrentMoves != 0) //avoid / by 0
@@ -120,4 +121,11 @@ public class MoveSelectionManager : MonoBehaviour, IMoveDisplayer
     {
         currentDisplayer.Exit(currentSelectionIndex);
     }
+
+    public IEnumerator WaitForCoroutine()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public BattleMove Value => throw new System.NotImplementedException();
 }

@@ -31,10 +31,14 @@ public class PressButtonsPlayerMove : BattleMoveComponent
         buttonPool = _buttonPrefab.CreateMonoPool(position: _buttonParent.position, parent: _buttonParent);
     }
 
-    public override IEnumerator PlayAttack(BattleContext context, BattleAttack playerMove)
+    public override IEnumerator PlayAttack(BattleContext context, BattleAttack battleAttack)
     {
+        context.DescriptionField.SetText(battleAttack.MoveBase.MoveName);
+        context.DescriptionField.SetActive(true);
         yield return new WaitForSeconds(1);
-        context.BattleCamera.SetTargetTransform(playerMove.Target.transform);
+        context.DescriptionField.SetActive(false);
+        
+        context.BattleCamera.SetTargetTransform(battleAttack.Target.transform);
         yield return new WaitForSeconds(1);
 
         int numButtons = _numButtons.Value;

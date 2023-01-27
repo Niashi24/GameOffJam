@@ -9896,6 +9896,7 @@ MonoBehaviour:
   _playerUnitManager: {fileID: 90503466}
   _enemyUnitManager: {fileID: 465343379}
   _battleCamera: {fileID: 1543439061}
+  _descriptionField: {fileID: 59884808}
   _playerAttackChooser:
     rid: 1030492411035123714
   _enemyAttackChooser:
@@ -12107,6 +12108,7 @@ GameObject:
   - component: {fileID: 664978502}
   - component: {fileID: 664978503}
   - component: {fileID: 664978504}
+  - component: {fileID: 7392052259201798228}
   m_Layer: 5
   m_Name: Move Selector
   m_TagString: Untagged
@@ -21522,7 +21524,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 7
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1993107435
 RectTransform:
@@ -23061,3 +23063,99 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+--- !u!114 &7392052259201798228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664978501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8d8dd3048048548ba3024563bf556f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1388631218}
+    - {fileID: 337291884}
+    - {fileID: 695195280}
+    - {fileID: 256364575}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _tabMoveTypeDictionary
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[TabButton, Assembly-CSharp],[MoveType,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[TabButton, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 3
+    - Name: $v
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  _tabGroup: {fileID: 2124847060}
+  _moveSelections: []
+  _keybinds: {fileID: 11400000, guid: f4627fce78813b34bb2ab30625db8460, type: 2}

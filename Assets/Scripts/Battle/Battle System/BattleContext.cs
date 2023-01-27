@@ -11,4 +11,6 @@ public class BattleContext
     public BattleManager BattleManager;
 
     public BattleCamera BattleCamera;
+
+    public DescriptionField DescriptionField;
 }

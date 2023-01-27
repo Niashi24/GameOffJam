@@ -14,15 +14,27 @@ public class DescriptionFieldEvents : MonoBehaviour
 
     IEnumerator Start()
     {
-        yield return Test(Callback);
-        IEnumerator Callback()
+        // This might be a serialized object for the MonoBehavior
+        Test _serializedTest = new();
+
+        yield return ValueCoroutine.AwaitValueCoroutine(_serializedTest, Callback);
+        IEnumerator Callback(int s)
         {
+            Debug.Log(s);
             yield break;
         }
     }
 
-    IEnumerator Test(System.Func<IEnumerator> test)
+    private class Test : ICoroutineValue<int>
     {
-        yield return test();
+        private int _value = 0;
+        public int Value => _value;
+
+        public IEnumerator WaitForCoroutine()
+        {
+            //Do stuff/wait to get value
+            _value = 5;
+            yield break;
+        }
     }
 }

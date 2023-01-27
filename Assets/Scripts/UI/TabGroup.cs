@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System;
 
 public class TabGroup : MonoBehaviour
 {
@@ -18,13 +19,15 @@ public class TabGroup : MonoBehaviour
     private TabButton _selectedTab;
     public TabButton SelectedTab => _selectedTab;
 
+    public Action<TabButton> OnTabSelected;
+
     public void Subscribe(TabButton button)
     {
         if (tabButtons is null)
             tabButtons = new List<TabButton>();
 
         if (_selectedTab == null && _defaultTab == button)
-            OnTabSelected(button);
+            OnTabClicked(button);
 
         tabButtons.Add(button);
     }
@@ -43,7 +46,7 @@ public class TabGroup : MonoBehaviour
         ResetTabs();
     }
 
-    public void OnTabSelected(TabButton button)
+    public void OnTabClicked(TabButton button)
     {
         _selectedTab?.Deselect();
         _selectedTab = button;
@@ -51,6 +54,8 @@ public class TabGroup : MonoBehaviour
 
         ResetTabs();
         button.Background.sprite = _tabActive;
+
+        OnTabSelected?.Invoke(button);
     }
 
     public void ResetTabs()

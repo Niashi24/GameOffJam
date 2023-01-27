@@ -9,20 +9,29 @@ public interface ICoroutineValue<T>
     T Value {get;}
 }
 
+public interface ICoroutineValue<TIn, TOut>
+{
+    IEnumerator WaitForCoroutine(TIn value);
+
+    TOut Value {get;}
+}
+
 public static class ValueCoroutine
 {
     public static IEnumerator AwaitValueCoroutine<T>(
-        this MonoBehaviour subject, 
-        ICoroutineValue<T> coroutine,
+        this ICoroutineValue<T> coroutine,
         System.Func<T, IEnumerator> callback)
     {
-        yield return subject.StartCoroutine(coroutine.WaitForCoroutine());
+        yield return coroutine.WaitForCoroutine();
         yield return callback(coroutine.Value);
     }
 
-    // public IEnumerator Run(MonoBehaviour subject, ICoroutineValue<T> coroutine, System.Func<T, IEnumerator> callback)
-    // {
-    //     yield return subject.StartCoroutine(coroutine.WaitForCoroutine());
-    //     yield return callback(coroutine.Value);
-    // }
+    public static IEnumerator AwaitValueCoroutine<TIn, TOut>(
+        this ICoroutineValue<TIn, TOut> coroutine,
+        TIn value,
+        System.Func<TOut, IEnumerator> callback)
+    {
+        yield return coroutine.WaitForCoroutine(value);
+        yield return callback(coroutine.Value);
+    }
 }
