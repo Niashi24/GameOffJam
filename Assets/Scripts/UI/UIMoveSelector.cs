@@ -16,7 +16,7 @@ public class UIMoveSelector : MonoBehaviour, IBattleAttackChooser
 
     [SerializeField]
     [Required]
-    GameObject _descriptionField;
+    DescriptionField _descriptionField;
 
     [SerializeField]
     [Required]

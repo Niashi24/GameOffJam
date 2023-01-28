@@ -30,7 +30,7 @@ public class CameraAnchorTransformation : MonoBehaviour
     [Tooltip("Anchor position is transferred from Input Camera using Input type into Middle Type")]
     CameraPositionType _inputCameraType;
     [SerializeField]
-    CameraPositionType _middleCameraType = CameraPositionType.SCREEN_POINT;
+    CameraPositionType _middleCameraType = CameraPositionType.VIEWPORT;
     [SerializeField]
     [Tooltip("Translated position is transferred from Middle Type into output position using Output Camera")]
     CameraPositionType _outputCameraType;

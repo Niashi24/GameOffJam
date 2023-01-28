@@ -30,7 +30,7 @@ public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     [SerializeField]
     [Required]
-    Text _descriptionField;
+    DescriptionField _descriptionField;
 
     //might add a sfx for this later
     public System.Action OnEnableOutline;
@@ -79,7 +79,7 @@ public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void EnableOutline()
     {
         _outline.color = _enabled;
-        _descriptionField.text = Target.Name;
+        _descriptionField.SetText(Target.Name);
         OnEnableOutline?.Invoke();
     }
 

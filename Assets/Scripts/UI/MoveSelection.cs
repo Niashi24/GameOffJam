@@ -23,7 +23,7 @@ public class MoveSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [SerializeField]
     [Required]
-    Text _descriptionField;
+    DescriptionField _descriptionField;
 
     public BattleMove Move {get; private set;}
 
@@ -65,7 +65,7 @@ public class MoveSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void EnableOutline()
     {
         _outline.color = _enabled;
-        _descriptionField.text = Move.MoveDescription;
+        _descriptionField.SetText(Move.MoveDescription);
         OnEnableOutline?.Invoke();
     }
 

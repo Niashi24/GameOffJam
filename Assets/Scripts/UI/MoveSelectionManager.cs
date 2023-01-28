@@ -92,6 +92,7 @@ public class MoveSelectionManager : MonoBehaviour, IMoveDisplayer
     void MoveSelection(int num)
     {
         if (num == 0) return;
+        if (currentDisplayer.NumberOfCurrentMoves == 0) return;
 
         ExitCurrentSelection();
 
