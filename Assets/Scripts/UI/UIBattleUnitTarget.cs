@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField]
-    [Required]
-    Camera _inputCamera;
+    // [SerializeField]
+    // [Required]
+    // Camera _inputCamera;
 
-    [SerializeField]
-    [Required]
-    Camera _outputCamera;
+    // [SerializeField]
+    // [Required]
+    // Camera _outputCamera;
 
     [ShowInInspector, ReadOnly]
     public UITargetSelector TargetGroup {get; private set;}
@@ -31,6 +31,10 @@ public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField]
     [Required]
     DescriptionField _descriptionField;
+
+    [SerializeField]
+    [Required]
+    RectTransform _rectTransform;
 
     //might add a sfx for this later
     public System.Action OnEnableOutline;
@@ -50,14 +54,25 @@ public class UIBattleUnitTarget : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         Target = target;
         TargetGroup = targetGroup;
-        transform.position = _outputCamera.ViewportToScreenPoint(_inputCamera.WorldToViewportPoint(Target.transform.position));
+
+        UpdatePosition();
+        // transform.position = _outputCamera.ViewportToScreenPoint(_inputCamera.WorldToViewportPoint(Target.transform.position));
     }
 
     void Update()
     {
+        UpdatePosition();
+        // transform.position = _outputCamera.ViewportToScreenPoint(_inputCamera.WorldToViewportPoint(Target.transform.position));
+    }
+
+    public void UpdatePosition()
+    {
         if (Target == null) return;
         if (TargetGroup == null) return;
-        transform.position = _outputCamera.ViewportToScreenPoint(_inputCamera.WorldToViewportPoint(Target.transform.position));
+
+        Bounds bounds = Target.Bounds2D;
+        transform.position = bounds.center + new Vector3(176, 120, 0);
+        _rectTransform.sizeDelta = bounds.extents * 2;
     }
 
     public void OnPointerClick(PointerEventData eventData)

@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class SpriteBattleUnitVisual : BattleUnitVisual
+public class SpriteBattleUnitVisual : BattleUnitVisual, IBounds
 {
     [SerializeField]
     [Required]
@@ -16,4 +16,6 @@ public class SpriteBattleUnitVisual : BattleUnitVisual
     {
         _spriteRenderer.enabled = isActive;
     }
+
+    public Bounds Bounds2D => _spriteRenderer.bounds;
 }

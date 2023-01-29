@@ -44,3 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2752093b0b086439253725ffa2032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bounds2D:
+    rid: 8327286108149776399
+  references:
+    version: 2
+    RefIds:
+    - rid: 8327286108149776399
+      type: {class: TransformBounds, ns: , asm: Assembly-CSharp}
+      data:
+        _transform: {fileID: 4521539770879067303}
+        _extents: {x: 0, y: 0}

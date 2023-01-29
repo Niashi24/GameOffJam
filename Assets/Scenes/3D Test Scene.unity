@@ -1504,6 +1504,67 @@ MonoBehaviour:
   _buttonLabel: {fileID: 56749519}
   _before: {x: 14, y: -12, z: 0}
   _after: {x: 14, y: -10, z: 0}
+--- !u!1 &276425399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 276425400}
+  - component: {fileID: 276425401}
+  m_Layer: 0
+  m_Name: Player All Unit 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &276425400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276425399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -266.38696, y: -37.87949, z: 169.37744}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2113539855}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &276425401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276425399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd14e73b176ee9468e19d34be74b52e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputCamera: {fileID: 1543439059}
+  _outputCamera: {fileID: 1801090108}
+  _anchor: {fileID: 959832694}
+  _anchorX: 0
+  _anchorY: 0
+  _sizeReference:
+    rid: 8327286108149776396
+  _inputCameraType: 0
+  _middleCameraType: 2
+  _outputCameraType: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 8327286108149776396
+      type: {class: ManualSize, ns: , asm: Assembly-CSharp}
+      data:
+        _size: {x: 32, y: 32}
 --- !u!1 &288956740
 GameObject:
   m_ObjectHideFlags: 0
@@ -9923,7 +9984,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 710377746}
+  m_Father: {fileID: 757108999}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &425192668
@@ -11774,7 +11835,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -12255,7 +12316,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: _bounds2D
+      value: 8327286108149776387
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
       propertyPath: _battleUnitVisual
+      value: 
+      objectReference: {fileID: 1227704418}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: managedReferences[8327286108149776387]
+      value: Assembly-CSharp ObjectReferenceBounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: managedReferences[8327286108149776387]._boundsObjectReference._object
       value: 
       objectReference: {fileID: 1227704418}
     m_RemovedComponents: []
@@ -12492,38 +12565,6 @@ MonoBehaviour:
   _buttonLabel: {fileID: 1409167866}
   _before: {x: 14, y: -12, z: 0}
   _after: {x: 14, y: -10, z: 0}
---- !u!1 &710377745
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 710377746}
-  m_Layer: 0
-  m_Name: Battle System
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &710377746
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710377745}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 396537732}
-  m_Father: {fileID: 757108999}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &717840837
 GameObject:
   m_ObjectHideFlags: 0
@@ -12826,12 +12867,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputCamera: {fileID: 1543439059}
-  _outputCamera: {fileID: 1801090108}
   _outline: {fileID: 1042384662}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
   _enabled: {r: 0.41176474, g: 1, b: 0.8313726, a: 1}
   _descriptionField: {fileID: 59884808}
+  _rectTransform: {fileID: 753969202}
 --- !u!1 &757108998
 GameObject:
   m_ObjectHideFlags: 0
@@ -12860,7 +12900,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 710377746}
+  - {fileID: 396537732}
   - {fileID: 1801090109}
   - {fileID: 1740324980}
   - {fileID: 865501519}
@@ -13052,6 +13092,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791819889}
   m_CullTransparentMesh: 1
+--- !u!1 &804952407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804952408}
+  - component: {fileID: 804952409}
+  m_Layer: 0
+  m_Name: Enemy All Unit 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804952408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804952407}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -34.549015, y: -22.774883, z: 169.87744}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1621995161}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &804952409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804952407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd14e73b176ee9468e19d34be74b52e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputCamera: {fileID: 1543439059}
+  _outputCamera: {fileID: 1801090108}
+  _anchor: {fileID: 1638763799}
+  _anchorX: 0
+  _anchorY: -1
+  _sizeReference:
+    rid: 8327286108149776396
+  _inputCameraType: 0
+  _middleCameraType: 2
+  _outputCameraType: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 8327286108149776396
+      type: {class: ManualSize, ns: , asm: Assembly-CSharp}
+      data:
+        _size: {x: 32, y: 32}
 --- !u!1 &846042379
 GameObject:
   m_ObjectHideFlags: 0
@@ -13483,12 +13584,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputCamera: {fileID: 1543439059}
-  _outputCamera: {fileID: 1801090108}
   _outline: {fileID: 1247575021}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
   _enabled: {r: 0.41176474, g: 1, b: 0.8313726, a: 1}
   _descriptionField: {fileID: 59884808}
+  _rectTransform: {fileID: 890257201}
 --- !u!1 &926411615
 GameObject:
   m_ObjectHideFlags: 0
@@ -13731,7 +13831,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959832693}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13751,7 +13851,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c33fff60f26a354fb139495dde98566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bounds2D:
+    rid: 8327286108149776391
   _name: All (Player)
+  references:
+    version: 2
+    RefIds:
+    - rid: 8327286108149776391
+      type: {class: TransformBounds, ns: , asm: Assembly-CSharp}
+      data:
+        _transform: {fileID: 276425400}
+        _extents: {x: 32, y: 32}
 --- !u!1 &983196567
 GameObject:
   m_ObjectHideFlags: 0
@@ -14983,12 +15093,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputCamera: {fileID: 1543439059}
-  _outputCamera: {fileID: 1801090108}
   _outline: {fileID: 1167070335}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
   _enabled: {r: 0.41176474, g: 1, b: 0.8313726, a: 1}
   _descriptionField: {fileID: 59884808}
+  _rectTransform: {fileID: 1150921892}
 --- !u!1 &1167070333
 GameObject:
   m_ObjectHideFlags: 0
@@ -16038,6 +16147,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: _bounds2D
+      value: 8327286108149776386
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: managedReferences[8327286108149776386]
+      value: Assembly-CSharp ObjectReferenceBounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: managedReferences[8327286108149776386]._boundsObjectReference._object
+      value: 
+      objectReference: {fileID: 1409318213}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
 --- !u!4 &1289542430 stripped
@@ -17204,6 +17325,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 465343378}
     m_Modifications:
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: _bounds2D
+      value: 8327286108149776390
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: managedReferences[8327286108149776390]
+      value: Assembly-CSharp ObjectReferenceBounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: managedReferences[8327286108149776390]._boundsObjectReference._object
+      value: 
+      objectReference: {fileID: 1386076346}
     - target: {fileID: 4521539770879067302, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
       propertyPath: m_Name
       value: Enemy Unit 3
@@ -17986,12 +18119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputCamera: {fileID: 1543439059}
-  _outputCamera: {fileID: 1801090108}
   _outline: {fileID: 554533948}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
   _enabled: {r: 0.41176474, g: 1, b: 0.8313726, a: 1}
   _descriptionField: {fileID: 59884808}
+  _rectTransform: {fileID: 1480565886}
 --- !u!1 &1523756767
 GameObject:
   m_ObjectHideFlags: 0
@@ -18459,12 +18591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputCamera: {fileID: 1543439059}
-  _outputCamera: {fileID: 1801090108}
   _outline: {fileID: 2020692478}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
   _enabled: {r: 0.41176474, g: 1, b: 0.8313726, a: 1}
   _descriptionField: {fileID: 59884808}
+  _rectTransform: {fileID: 1573396164}
 --- !u!1 &1606793441
 GameObject:
   m_ObjectHideFlags: 0
@@ -18616,12 +18747,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputCamera: {fileID: 1543439059}
-  _outputCamera: {fileID: 1801090108}
   _outline: {fileID: 1770418736}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
   _enabled: {r: 0.41176474, g: 1, b: 0.8313726, a: 1}
   _descriptionField: {fileID: 59884808}
+  _rectTransform: {fileID: 1618159370}
 --- !u!1 &1619680687
 GameObject:
   m_ObjectHideFlags: 0
@@ -18753,6 +18883,7 @@ Transform:
   - {fileID: 483974246}
   - {fileID: 390245106}
   - {fileID: 1386076345}
+  - {fileID: 804952408}
   m_Father: {fileID: 288956741}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18876,7 +19007,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c33fff60f26a354fb139495dde98566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bounds2D:
+    rid: 8327286108149776392
   _name: All (Enemy)
+  references:
+    version: 2
+    RefIds:
+    - rid: 8327286108149776392
+      type: {class: TransformBounds, ns: , asm: Assembly-CSharp}
+      data:
+        _transform: {fileID: 804952408}
+        _extents: {x: 32, y: 32}
 --- !u!1 &1648460357
 GameObject:
   m_ObjectHideFlags: 0
@@ -19460,12 +19601,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputCamera: {fileID: 1543439059}
-  _outputCamera: {fileID: 1801090108}
   _outline: {fileID: 2107774871}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
   _enabled: {r: 0.41176474, g: 1, b: 0.8313726, a: 1}
   _descriptionField: {fileID: 59884808}
+  _rectTransform: {fileID: 1677381889}
 --- !u!1001 &1690994096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19473,6 +19613,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 465343378}
     m_Modifications:
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: _bounds2D
+      value: 8327286108149776389
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: managedReferences[8327286108149776389]
+      value: Assembly-CSharp ObjectReferenceBounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: managedReferences[8327286108149776389]._boundsObjectReference._object
+      value: 
+      objectReference: {fileID: 390245107}
     - target: {fileID: 4521539770879067302, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
       propertyPath: m_Name
       value: Enemy Unit 2
@@ -21990,12 +22142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa38d80f22b9d947aa9217c7d12094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputCamera: {fileID: 1543439059}
-  _outputCamera: {fileID: 1801090108}
   _outline: {fileID: 1381500214}
   _disabled: {r: 0, g: 0.6, b: 0.8588236, a: 1}
   _enabled: {r: 0.41176474, g: 1, b: 0.8313726, a: 1}
   _descriptionField: {fileID: 59884808}
+  _rectTransform: {fileID: 2076216943}
 --- !u!1 &2084469257
 GameObject:
   m_ObjectHideFlags: 0
@@ -22277,6 +22428,7 @@ Transform:
   - {fileID: 369321011}
   - {fileID: 1227704417}
   - {fileID: 1409318212}
+  - {fileID: 276425400}
   m_Father: {fileID: 288956741}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22892,7 +23044,27 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: _bounds2D
+      value: 8327286108149776385
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
       propertyPath: _battleUnitVisual
+      value: 
+      objectReference: {fileID: 369321015}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: managedReferences[8327286108149776384]
+      value: Assembly-CSharp ObjectReferenceBounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: managedReferences[8327286108149776385]
+      value: Assembly-CSharp ObjectReferenceBounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: managedReferences[8327286108149776384]._boundsObjectReference._object
+      value: 
+      objectReference: {fileID: 369321015}
+    - target: {fileID: 3816286776939043138, guid: ea7ece90b53c75840943c4a0792883a0, type: 3}
+      propertyPath: managedReferences[8327286108149776385]._boundsObjectReference._object
       value: 
       objectReference: {fileID: 369321015}
     m_RemovedComponents: []
@@ -23001,6 +23173,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 465343378}
     m_Modifications:
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: _bounds2D
+      value: 8327286108149776388
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: managedReferences[8327286108149776388]
+      value: Assembly-CSharp ObjectReferenceBounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521539770879067300, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
+      propertyPath: managedReferences[8327286108149776388]._boundsObjectReference._object
+      value: 
+      objectReference: {fileID: 483974247}
     - target: {fileID: 4521539770879067302, guid: 95e3961841e5c7b4a8b5c45d8b05da26, type: 3}
       propertyPath: m_Name
       value: Enemy Unit 1

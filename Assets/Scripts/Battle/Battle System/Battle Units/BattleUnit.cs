@@ -20,6 +20,19 @@ public abstract class BattleUnit : MonoBehaviour
 
     public abstract string Name {get;}
 
+    [SerializeReference]
+    [Required]
+    IBounds _bounds2D;
+
+    public virtual Bounds Bounds2D 
+    {
+        get
+        {
+            if (_bounds2D == null) return new Bounds();
+            return _bounds2D.Bounds2D;
+        }
+    }
+
     public virtual bool CanAttack
     {
         get => HP > 0;
